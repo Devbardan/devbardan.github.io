@@ -334,14 +334,14 @@ main-i{
     }
 }
 aside p{
-    color: var(--teme3-color1);
     position: fixed;
-    top: 70vh;
-    left: -165px;
+    top: 43vh;
+    left: -444px;
     transform: rotate(90deg);
-    font-size: 55px;
+    font-size: 150px;
     font-family: 'Milker';
     mix-blend-mode: difference;
+    -webkit-text-stroke: 2px var(--teme3-color1);
 }
 footer{
     width: 100%;
@@ -350,6 +350,7 @@ footer{
 .typing-text{
     position: relative;
     height: 30px;
+    margin-top: 10px;
     display: inline-block;
     color: var(--teme3-color1);
 
@@ -366,7 +367,7 @@ footer{
     height: 100%;
     border-left: 2px solid #161616;
     right: -8px;
-    top: -5px;
+    top: -6px;
     animation: cursor .6s infinite, typing 20s steps(14) infinite;
 }
 @keyframes cursor {
