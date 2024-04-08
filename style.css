@@ -15,6 +15,9 @@
     font-family: Helvetica;
     box-sizing: border-box;
 }
+body{
+    overflow-x: hidden;
+}
 .white-mode{
     color: var(--teme-color2);
     background-color: var(--teme2-color1);
@@ -122,7 +125,9 @@ button:hover i:before,a.active i,button:hover .nav-label {
 }
 
 header{
-    height: 66.6vh;
+    min-height: 600px;
+    position: relative;
+    flex-wrap: wrap;
 }
 h1{
     font-family: 'Milker';
@@ -143,10 +148,12 @@ h3{
     background: var(--teme-color2);
     text-align: center;
     padding: 100px 150px;
+    position: relative;
+    flex-wrap: wrap;
 }
 .center-column ul {
     display: flex;
-    flex-flow: row wrap;
+    flex-wrap: wrap;
     justify-content: space-around;
     
 }
@@ -171,10 +178,12 @@ h3{
     font-family: 'Rosewind regular';
 }
 main{
-    padding: 150px;
+    padding: 150px 0px;
     display: flex;
     justify-content: space-between;
     background: var(--teme-color4);
+    position: relative;
+    flex-wrap: wrap;
 }
 main-i{
     background: var(--teme2-color2);
@@ -184,17 +193,19 @@ main-i{
     display: flex;
     justify-content: space-around;
     position: relative;
+    flex-wrap: wrap;
 }
 .content{
-    padding: 100px 250px;
     display: flex;
     justify-content: space-around;
     position: relative;
+    flex-wrap: wrap;
 }
 .left-column{
+    flex: 1;
     padding: 30px;
     position: relative;
-    width: 70%;
+    min-width: 250px;
     display: grid;
     align-content: center;
 }
@@ -203,9 +214,26 @@ main-i{
     color: var(--teme3-color5);
 }
 .i-left-column{
+    flex:1;
     padding: 20px;
     position: relative;
-    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.typing-text::before{
+    content: 'Front-end';
+    animation: words 20s infinite;
+}
+.typing-text::after{
+    content: '';
+    position: absolute;
+    background: var(--teme2-color1);
+    width: calc(100% + 8px);
+    height: 100%;
+    border-left: 2px solid #161616;
+    right: -8px;
+    top: -6px;
+    animation: cursor .6s infinite, typing 20s steps(14) infinite;
 }
 .social button{
 	width: 150px;
@@ -230,14 +258,19 @@ main-i{
     margin-right: 30px;
 }
 .proyects-column{
+    flex:2;
     display: flex;
-    flex-flow: row wrap;
+    position: relative;
+    min-width: 250px;
+    flex-wrap: wrap;
     width: auto;
     justify-content: center;
 }
 .right-column{
+    flex:2;
     padding: 20px;
     text-align: center;
+    min-width: 250px;
 }
 .card{
     width: 14rem;
@@ -342,6 +375,7 @@ aside p{
     font-family: 'Milker';
     mix-blend-mode: difference;
     -webkit-text-stroke: 2px var(--teme3-color1);
+    pointer-events: none;
 }
 footer{
     width: 100%;
@@ -350,25 +384,53 @@ footer{
 .typing-text{
     position: relative;
     height: 30px;
+    min-width: 250px;
     margin-top: 10px;
     display: inline-block;
     color: var(--teme3-color1);
 
 }
-.typing-text::before{
-    content: 'Front-end';
-    animation: words 20s infinite;
-}
-.typing-text::after{
-    content: '';
-    position: absolute;
-    background: var(--teme2-color1);
-    width: calc(100% + 8px);
-    height: 100%;
-    border-left: 2px solid #161616;
-    right: -8px;
-    top: -6px;
-    animation: cursor .6s infinite, typing 20s steps(14) infinite;
+
+@media (max-width :600px), screen and
+(orientation: portrait){
+    .i-content{
+        padding: 50px;
+    }
+    h1{
+        font-size: 2.5em;
+        line-height: 30px;
+
+    }
+    h3{
+        font-size: 1.5em;
+    }
+    .right-column{
+        padding: 100px 0;
+    }
+    .social{
+        right: 0px;
+        bottom: 0px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .social i {
+        flex:1;
+        min-width: 50px;
+        margin: 30px;
+    }
+    .experience{
+        padding: 100px 0px;
+    }
+    .center-column ul li div{
+        width: 300px;
+        border: none;
+    }
+    aside p{
+        font-size: 60px;
+        top: 650px;
+        right: -180px;
+    }
 }
 @keyframes cursor {
     to{
