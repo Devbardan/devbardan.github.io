@@ -1,19 +1,12 @@
 :root{
-    --teme-color1: #9ED5C2; /* Us */
     --teme-color2: #05071E; /* Us */
-    --teme-color3: #33B0CE;
-    --teme-color4: #F48762;
-    --teme-color5: #FCBD87;
-    --teme2-color1: #ecbe13; /* Us */
-    --teme2-color2: #738c79;
-    --teme2-color3: #6a6b5f;
-    --teme2-color4: #2c2b26;
-    --teme2-color5: #a43955;
+    --teme-color4: #C6B36C;
+    --teme2-color1: #cfa713; /* Us */
+    --teme2-color2: #230e6a;
     --teme3-color1:#880606; /* Us*/
     --teme3-color2:#d53d0c; /* Us*/
-    --teme3-color3: #ff8207;
     --teme3-color4: #231d1e;
-    --teme3-color5: #fcfcfc;
+    --teme3-color5: #fcfcfc; /*us*/
 }
 
 *{
@@ -139,6 +132,7 @@ h1{
 h2{
     font-family: 'Rosewind regular';
     font-size: 2rem;
+    color: var(--teme3-color5);
 }
 h3{
     font-family: 'Rosewind regular';
@@ -148,17 +142,17 @@ h3{
 .experience{
     background: var(--teme-color2);
     text-align: center;
-    padding: 100px 150px 100px 150px;
+    padding: 100px 150px;
 }
 .center-column ul {
-    padding: 50px;
     display: flex;
+    flex-flow: row wrap;
     justify-content: space-around;
     
 }
 .center-column ul li{
     list-style-type: none;
-    position: relative;
+    margin-top: 50px;
 }
 .center-column ul li div{
     position: relative;
@@ -167,6 +161,8 @@ h3{
     height: 150px;
     padding: 15px;
     border: 1px solid #eee;
+    mix-blend-mode: difference;
+    color:var(--teme3-color5);
 }
 .exp time{
     font-size: 15px;
@@ -178,10 +174,10 @@ main{
     padding: 150px;
     display: flex;
     justify-content: space-between;
-    background: #161616;
+    background: var(--teme-color4);
 }
 main-i{
-    background: #d68527;
+    background: var(--teme2-color2);
 }
 .i-content{
     padding: 100px;
@@ -196,9 +192,15 @@ main-i{
     position: relative;
 }
 .left-column{
-    padding: 20px;
+    padding: 30px;
     position: relative;
     width: 70%;
+    display: grid;
+    align-content: center;
+}
+.left-column p {
+    padding-top: 20px;
+    color: var(--teme3-color5);
 }
 .i-left-column{
     padding: 20px;
@@ -209,11 +211,12 @@ main-i{
 	width: 150px;
 	height: 30px;
 	font-family: 'Rosewind regular';
-	background: #161616;
+	background: var(--teme3-color1);
 	font-size: 20px;
-    color: #eee;
+    color: var(--teme3-color3);
     border: none;
     bottom: -50px;
+    mix-blend-mode: difference;
 }
 .social{
     font-size: 30px;
@@ -334,9 +337,9 @@ aside p{
     color: var(--teme3-color1);
     position: fixed;
     top: 70vh;
-    left: -150px;
+    left: -165px;
     transform: rotate(90deg);
-    font-size: 50px;
+    font-size: 55px;
     font-family: 'Milker';
     mix-blend-mode: difference;
 }
@@ -358,7 +361,7 @@ footer{
 .typing-text::after{
     content: '';
     position: absolute;
-    background: #eee;
+    background: var(--teme2-color1);
     width: calc(100% + 8px);
     height: 100%;
     border-left: 2px solid #161616;
