@@ -3,54 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/0d2bb5118c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <title>Devbardan</title>
 </head>
 <body>
-    <header class="white-mode">
+    <header class="white-mode sections active" id="home">
         <nav>
             <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Quien soy</a></li>
-                <h2>Devbardan</h2>
-                <li><a href="#">Proyectos</a></li>
-                <li><a href="#">Contacto</a></li>
-
+                <h2>Dev.bardan</h2>
             </ul>
         </nav>
-        <div class="banner-init">
-            <section>
+        <div class="i-content">
+            <section class="i-left-column">
                 <h1>Daniel <br>
                 Velasquez</h1>
-                <h2>Front-end</h2>
-                <button>Contact</button>
+                <h3 class="typing-text"></h3>
+                
             </section>
-            <section>
+            <section class="right-column">
                 <h1>FOTO</h1>
             </section>
-        </div>  
+        </div>
+        <section class="social">
+            <i class="fa-brands fa-linkedin"></i>
+            <i class="fa-brands fa-github"></i>
+            <button>Contact</button> 
+        </section>
+         
     </header>
-    <main class="proyects-content">
+    <section class="experience sections" id="exp">
+        <div class="center-column">
+            <h2>Experiencia</h2>
+                <ul>
+                    <li>
+                        <div class="exp">
+                            <time>2020 - 2022</time>
+                            <p>AsesEmpresariales</p>
+                            Mi trabajo consta de diseñar, crear e implementar funcionalidades espesificas para diversos sitios web de los clientes tambien mejorar la experiencia de usuario, el seo y velocidades de carga del sitio.
+                        </div>
+                    </li>
+                    <li>
+                        <div class="exp">
+                            <time>2019 - 2020</time>
+                            <p>Construyored</p>
+                            Capturar los mejores momentos y crear contenido para diversas redes sociales utilizando las mejores herramientas de diseño, edicion de video, fotografia y animacion,
+                        </div>
+                    </li>
+                </ul>
+        </div>
+    </section>
+    <main class="content sections" id="proyects">
         <div class="left-column">
-            <h2>Proyectos</h2>
+            <h2>Proyects</h2>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat rerum odio, atque ipsam architecto fugit porro, placeat hic non inventore voluptates maxime aperiam illum officia! Expedita enim vitae natus atque! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste laboriosam neque in rerum consectetur ducimus dolor, odio et cumque repudiandae iure dolorum ea nam molestias nulla corrupti illo quidem deserunt!</p>
         </div>
-        <div class="right-column">
-            <article class="card"><h1>H</h1></article>
-            <article class="card"><h1>o</h1></article>
-            <article class="card"><h1>l</h1></article>
-            <article class="card"><h1>a</h1></article>
-        </div>
-        <div>
-            <h2>Tecnologiass</h2>
-
+        <div class="proyects-column">
+            <article class="card">
+                <img src="./img/card.jpg" alt="">
+                <div class="card_details">
+                    <h2>Proyecto</h2>
+                    <p>asfklhaslkfhaslkfasl sklafjasklfjaslkfashlsaf kjasfl kratione tempore nisi.</p>
+                    <button>Read more</button>
+                </div>
+            </article>
+            <article class="card">
+                <img src="./img/card.jpg" alt="">
+                <div class="card_details">
+                    <h2>Proyecto</h2>
+                    <p>asfklhaslkfhaslkfasl sklafjasklfjaslkfashlsaf kjasfl kratione tempore nisi.</p>
+                    <button>Read more</button>
+                </div>
+            </article>
+            <article class="card">
+                <img src="./img/card.jpg" alt="">
+                <div class="card_details">
+                    <h2>Proyecto</h2>
+                    <p>asfklhaslkfhaslkfasl sklafjasklfjaslkfashlsaf kjasfl kratione tempore nisi.</p>
+                    <button>Read more</button>
+                </div>
+            </article>
+            <article class="card">
+                <img src="./img/card.jpg" alt="">
+                <div class="card_details">
+                    <h2>Proyecto</h2>
+                    <p>asfklhaslkfhaslkfasl sklafjasklfjaslkfashlsaf kjasfl kratione tempore nisi.</p>
+                    <button>Read more</button>
+                </div>
+            </article>
         </div>
     </main>
+    <main-i class="content sections" id="im">
+        <div class="left-column">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia dignissimos atque architecto culpa similique rerum vitae? Id quaerat et, amet autem, esse, ipsam quia recusandae cumque voluptas quidem ad eaque.</p>
+        </div>
+        <div class="right-column">
+            <h2>Quien soy?</h2>
+        </div>
+    </main-i>
     <aside>
-        <p>DEVELOPER</p> <!--- ESTO IREA EN EL ALTERAL DE LA PAGINA Y CAMBIARA DE COLOR CUANDO SE HAGA SCROLL CON ELFONDO-->
+        <p>DEVELOPER</p>
     </aside>
-    <footer>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum doloribus libero ullam rem, omnis necessitatibus facere laborum, nulla animi quas numquam! Amet odio harum accusantium similique quo animi quidem nobis.</p>
-    </footer>
-    <!---Este es un comentario-->
+    <div class="aside-nav">
+        <button><a href="#home" class="nav_link active"><i class="fa-regular fa-chess-pawn"></i><section class="nav-label">Home</section></a></button>
+        <button><a href="#exp" class="nav_link"><i class="fa-solid fa-chess-board"></i><section class="nav-label">Experience</section></a></button>
+        <button><a href="#proyects" class="nav_link"><i class="fa-regular fa-chess-rook"></i><section class="nav-label">Projects</section></a></button>
+        <button><a href="#im" class="nav_link"><i class="fa-regular fa-chess-knight"></i><section class="nav-label">I Am</section></a></button>
+    </div>
 </body>
+<script src="script.js"></script>
 </html>
