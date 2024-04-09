@@ -1,12 +1,12 @@
 :root{
-    --teme-color2: #05071E; /* Us */
+    --teme-color2: #05071E;
     --teme-color4: #C6B36C;
-    --teme2-color1: #cfa713; /* Us */
+    --teme2-color1: #cfa713; 
     --teme2-color2: #230e6a;
-    --teme3-color1:#880606; /* Us*/
-    --teme3-color2:#d53d0c; /* Us*/
+    --teme3-color1:#880606; 
+    --teme3-color2:#d53d0c; 
     --teme3-color4: #231d1e;
-    --teme3-color5: #fcfcfc; /*us*/
+    --teme3-color5: #fcfcfc; 
 }
 
 *{
@@ -21,12 +21,10 @@ body{
 .white-mode{
     color: var(--teme-color2);
     background-color: var(--teme2-color1);
-    border-color: #e0dd19;
 }
 .dark-mode{
     color: #eee;
     background-color: var(--main-black-color);
-    border-color: #d68527;
 }
 
 @font-face {
@@ -68,12 +66,12 @@ nav h2{
     display: grid;
     justify-content: center;
     button {
-        margin-bottom: 25px; /* Ajusta el espaciado entre botones */
+        margin-bottom: 25px;
         margin-top: 25px;
         mix-blend-mode: difference;
         border: none;
         background: none;
-        color: #eee;
+        color: var(--teme3-color5);
         position: relative;
         display: grid;
         justify-content: center;
@@ -103,25 +101,25 @@ nav h2{
 
 }
 button:hover i:before,a.active i{
-  font-size: 30px; /* Ajusta el tamaño de fuente en hover */
+  font-size: 30px; 
   color: red;
   display: inline-block;
 }
 button:hover i:before,a.active i,button:hover .nav-label {
-  margin: 0px; /* Ajusta el margen para que no se desplace */
+  margin: 0px; 
 }
 .nav-link:hover .nav-label {
-    display: inline-block; /* Muestra los textos de navegación al hacer hover */
-    font-size: 30px; /* Ajusta el tamaño de fuente en hover */
+    display: inline-block; 
+    font-size: 30px; 
     color: red;
-    margin: 0px; /* Ajusta el margen para que no se desplace */
+    margin: 0px; 
 }
 .nav-label {
-    display: none; /* Oculta los textos de navegación por defecto */
+    display: none; 
 }
   
 .nav-label.visible {
-    display: inline-block; /* Muestra los textos de navegación cuando tienen la clase 'visible' */
+    display: inline-block; 
 }
 
 header{
@@ -167,7 +165,7 @@ h3{
     width: 400px;
     height: 150px;
     padding: 15px;
-    border: 1px solid #eee;
+    border: 1px solid var(--teme3-color5);
     mix-blend-mode: difference;
     color:var(--teme3-color5);
 }
@@ -230,7 +228,7 @@ main-i{
     background: var(--teme2-color1);
     width: calc(100% + 8px);
     height: 100%;
-    border-left: 2px solid #161616;
+    border-left: 2px solid var(--teme3-color4);
     right: -8px;
     top: -6px;
     animation: cursor .6s infinite, typing 20s steps(14) infinite;
@@ -278,7 +276,7 @@ main-i{
     overflow: hidden;
     cursor: pointer;
     position: relative;
-    color: #161616;
+    color: var(--teme3-color4);
     margin: 5px;
 
     img{
@@ -293,11 +291,11 @@ main-i{
     }
     .tag{
         padding: 4px 8px;
-        border: 1px solid #e0dd19;
+        border: 1px solid var(--teme2-color1);
         border-radius: 50px;
         font-size: 12px;
         font-weight: 600;
-        color: #161616;
+        color: var(--teme3-color4);
         position: absolute;
         opacity: 0;
         max-width: 80%;
@@ -330,8 +328,8 @@ main-i{
         text-align: center;
         font-size: 28px;
         word-break:break-all;
-        background: #161616;
-        color: #eee;
+        background: var(--teme3-color4);
+        color: var(--teme3-color5);
     }
     .card_details p, a{
         font-family: 'milker';
@@ -353,13 +351,13 @@ main-i{
     &:hover h2{
         inset: auto auto 150px 0px;
         transition: inset .3s ease-out;
-        color: #eee;
+        color: var(--teme3-color5);
         background: #16161600;
     }
     &:hover  p, &:hover  a{
         opacity: 1;
         transition: opacity .5s .1s ease-in;
-        color: #eee;
+        color: var(--teme3-color5);
     }
     &:hover img{
         transition: opacity .3s ease-in;
@@ -368,18 +366,13 @@ main-i{
 }
 aside p{
     position: fixed;
-    top: 43vh;
-    left: -444px;
-    transform: rotate(90deg);
+    bottom: 40%;
+    transform: translateX(-46%) rotate(90deg);
     font-size: 150px;
     font-family: 'Milker';
     mix-blend-mode: difference;
     -webkit-text-stroke: 2px var(--teme3-color1);
     pointer-events: none;
-}
-footer{
-    width: 100%;
-    background: #21c51b;
 }
 .typing-text{
     position: relative;
@@ -426,10 +419,34 @@ footer{
         width: 300px;
         border: none;
     }
-    aside p{
-        font-size: 60px;
-        top: 650px;
-        right: -180px;
+    aside p {
+        font-size: 70px;
+        bottom: 35%;
+    }
+    .aside-nav {
+        width: 100%;
+        height: auto; 
+        position: fixed; 
+        bottom: 0; 
+        top: auto; 
+        right: auto; 
+        border-radius: 0; 
+        display: flex; 
+        justify-content: space-evenly; 
+        align-items: center; 
+    }
+    
+    .aside-nav button {
+        margin: 0; 
+        width: auto; 
+    }
+    .aside-nav i {
+        font-size: 24px; 
+    }
+    .aside-nav section {
+        display: none;
+        left: -40px;
+        top: -30px; 
     }
 }
 @keyframes cursor {
