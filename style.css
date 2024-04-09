@@ -142,6 +142,16 @@ h3{
     font-size: 2rem;
     line-height: 20px;
 }
+header .right-column{
+    background-image: url("./img/Daniel_Velasquez-dark-mode.webp");
+    mask-image: linear-gradient(
+        black 80%,transparent
+    );
+    background-repeat: no-repeat;
+    height: 380px;
+    background-position: center;
+    min-width: 300px;
+}
 .experience{
     background: var(--teme-color2);
     text-align: center;
@@ -198,6 +208,7 @@ main-i{
     justify-content: space-around;
     position: relative;
     flex-wrap: wrap;
+    padding: 0px 150px;
 }
 .left-column{
     flex: 1;
@@ -215,8 +226,6 @@ main-i{
     flex:1;
     padding: 20px;
     position: relative;
-    display: flex;
-    flex-wrap: wrap;
 }
 .typing-text::before{
     content: 'Front-end';
@@ -251,6 +260,7 @@ main-i{
     text-align: center;
     margin-top: -100px;
     color: var(--teme3-color2);
+    padding-bottom: 20px;
 }
 .social i{
     margin-right: 30px;
@@ -377,21 +387,20 @@ aside p{
 .typing-text{
     position: relative;
     height: 30px;
-    min-width: 250px;
-    margin-top: 10px;
+    margin-top: 0px;
     display: inline-block;
     color: var(--teme3-color1);
 
 }
 
-@media (max-width :600px), screen and
+@media (max-width :400px), screen and
 (orientation: portrait){
     .i-content{
         padding: 50px;
     }
     h1{
         font-size: 2.5em;
-        line-height: 30px;
+        line-height: 35px;
 
     }
     h3{
@@ -399,13 +408,6 @@ aside p{
     }
     .right-column{
         padding: 100px 0;
-    }
-    .social{
-        right: 0px;
-        bottom: 0px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
     }
     .social i {
         flex:1;
@@ -421,7 +423,7 @@ aside p{
     }
     aside p {
         font-size: 70px;
-        bottom: 35%;
+        bottom: 35vw;
     }
     .aside-nav {
         width: 100%;
@@ -449,6 +451,7 @@ aside p{
         top: -30px; 
     }
 }
+
 @keyframes cursor {
     to{
         border-left: 2px solid transparent;
