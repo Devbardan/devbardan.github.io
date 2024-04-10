@@ -58,7 +58,7 @@ nav h2{
 	width: 40px;
 	background:var(--teme3-color4);
 	position: fixed;
-	top: 30%;
+	top: 30vh;
 	right: 20px;
     border-radius: 20px;
     mix-blend-mode: difference;
@@ -93,10 +93,11 @@ nav h2{
         position: absolute;
         right: 60px;
         top: 0;
-        width: 100px;
-        height: 30px;
-        padding-top: 8px;
+        width: 120px;
+        height: auto;
+        padding: 10px 8px;
         font-family: 'Rosewind regular';
+        white-space:nowrap;
       }
 
 }
@@ -396,9 +397,9 @@ aside p{
 
 }
 
-@media (max-width :520px){
+@media (max-width :600px){
     .i-content{
-        padding: 50px;
+        padding: 20px 0;
     }
     h1{
         font-size: 2.5em;
@@ -407,6 +408,12 @@ aside p{
     }
     h3{
         font-size: 1.5em;
+    }
+    .i-left-column{
+        padding: 10px;
+    }
+    header .right-column{
+        background-image: url("./img/Daniel_Velasquez-white-mode.webp");
     }
     .right-column{
         padding: 100px 0;
@@ -438,6 +445,7 @@ aside p{
         display: flex; 
         justify-content: space-evenly; 
         align-items: center; 
+        mix-blend-mode: luminosity;
     }
     
     .aside-nav button {
@@ -450,10 +458,24 @@ aside p{
     .aside-nav section {
         display: none;
         left: -40px;
-        top: -30px; 
+        top: -40px;
+        width: 100px;
+        padding: 10px 0;
     }
     .typing-text{
         margin-top: 8px;
+    }
+    .content{
+        padding: 20px 0;
+    }
+}
+@media (max-height: 500px) {
+    .aside-nav{
+        top: 30vh;
+    }
+    .aside-nav button {
+        margin-bottom: 10px;
+        margin-top: 10px;
     }
 }
 
