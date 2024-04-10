@@ -143,7 +143,7 @@ h3{
     line-height: 20px;
 }
 header .right-column{
-    background-image: url("./img/Daniel_Velasquez-dark-mode.webp");
+    background-image: url("./img/Daniel_Velasquez-white-modexl.webp");
     mask-image: linear-gradient(
         black 80%,transparent
     );
@@ -151,6 +151,7 @@ header .right-column{
     height: 380px;
     background-position: center;
     min-width: 300px;
+    background-size: contain;
 }
 .experience{
     background: var(--teme-color2);
@@ -208,7 +209,7 @@ main-i{
     justify-content: space-around;
     position: relative;
     flex-wrap: wrap;
-    padding: 0px 150px;
+    padding: 100px 150px;
 }
 .left-column{
     flex: 1;
@@ -279,6 +280,8 @@ main-i{
     padding: 20px;
     text-align: center;
     min-width: 250px;
+    align-content: center;
+    display: grid;
 }
 .card{
     width: 14rem;
@@ -381,7 +384,7 @@ aside p{
     font-size: 150px;
     font-family: 'Milker';
     mix-blend-mode: difference;
-    -webkit-text-stroke: 2px var(--teme3-color1);
+    -webkit-text-stroke: 1px var(--teme3-color1);
     pointer-events: none;
 }
 .typing-text{
@@ -393,14 +396,13 @@ aside p{
 
 }
 
-@media (max-width :400px), screen and
-(orientation: portrait){
+@media (max-width :520px){
     .i-content{
         padding: 50px;
     }
     h1{
         font-size: 2.5em;
-        line-height: 35px;
+        line-height: 30px;
 
     }
     h3{
@@ -449,6 +451,9 @@ aside p{
         display: none;
         left: -40px;
         top: -30px; 
+    }
+    .typing-text{
+        margin-top: 8px;
     }
 }
 
