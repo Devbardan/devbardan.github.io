@@ -144,9 +144,9 @@ header .right-column{
         black 80%,transparent
     );
     background-repeat: no-repeat;
-    height: 25em;
+    height: 380px;
     background-position: center;
-    min-width: 30em;
+    min-width: 300px;
     background-size: contain;
 }
 .experience{
@@ -164,7 +164,7 @@ header .right-column{
 }
 .center-column ul li{
     list-style-type: none;
-    margin-top: 5em;
+    margin-top: 50px;
 }
 .center-column ul li div{
     position: relative;
@@ -177,7 +177,7 @@ header .right-column{
     color:var(--teme3-color5);
 }
 .exp time{
-    font-size: 1.5em;
+    font-size: 15px;
 }
 .exp p{
     font-family: 'Rosewind regular';
@@ -209,9 +209,9 @@ main-i{
 }
 .left-column{
     flex: 1;
-    padding: 1em;
+    padding: 30px;
     position: relative;
-    min-width: 25em;
+    min-width: 250px;
     display: grid;
     align-content: center;
 }
@@ -223,6 +223,7 @@ main-i{
     flex:1;
     padding: 20px;
     position: relative;
+    display: grid;
     align-content: center;
 }
 .typing-text::before{
@@ -392,7 +393,76 @@ aside p{
     color: var(--teme3-color1);
 
 }
+@media (min-width: 1400px) {
+    h1{
+        font-size: 6em;
+        line-height: .7em;
 
+    }
+    h2{
+        font-size: 3em;
+    }
+    h3{
+        font-size: 2em;
+    }
+    .right-column{
+        margin: 100px 0px;
+    }
+    .social{
+        margin-right: 200px;
+    }
+    .social i {
+        min-width: 100px;
+        margin: 0px;
+        font-size: 2em;
+    }
+    .social button{
+        font-size: 1.5em;
+        padding: 10px;
+        width: auto;
+        height: auto;
+    }
+    .experience{
+        padding: 100px 10em;
+    }
+    .center-column ul li div{
+        width: 350px;
+        border: none;
+    }
+    aside p {
+        font-size: 8em;
+        bottom: 30vw;
+    }
+    .i-content{
+        padding: 0 100px;
+    }
+    header .right-column{
+        height: 40em;
+    }
+    .aside-nav{
+        width: 4em;
+        border-radius: 50em;
+        mix-blend-mode: luminosity;
+    }
+    .aside-nav i{
+        font-size: 3em;
+    }
+    a:hover i:before,a.active i{
+        font-size: 60px; 
+    }
+    .aside-nav section {
+        display: none;
+        left: -230px;
+        top: -10px;
+        width: 200px;
+        padding: 10px 0;
+        font-size: 2em;
+    }
+    #corrupto{
+        top: 10px;
+    }
+
+}
 @media (max-width :600px){
     .i-content{
         padding: 20px 0;
@@ -474,76 +544,6 @@ aside p{
         margin-bottom: 10px;
         margin-top: 10px;
     }
-}
-@media (min-width: 1400px) {
-    h1{
-        font-size: 6em;
-        line-height: .7em;
-
-    }
-    h2{
-        font-size: 3em;
-    }
-    h3{
-        font-size: 2em;
-    }
-    .right-column{
-        margin: 100px 0px;
-    }
-    .social{
-        margin-right: 200px;
-    }
-    .social i {
-        min-width: 100px;
-        margin: 0px;
-        font-size: 2em;
-    }
-    .social button{
-        font-size: 1.5em;
-        padding: 10px;
-        width: auto;
-        height: auto;
-    }
-    .experience{
-        padding: 100px 10em;
-    }
-    .center-column ul li div{
-        width: 350px;
-        border: none;
-    }
-    aside p {
-        font-size: 8em;
-        bottom: 30vw;
-    }
-    .i-content{
-        padding: 0 100px;
-    }
-    header .right-column{
-        height: 40em;
-    }
-    .aside-nav{
-        width: 4em;
-        border-radius: 50em;
-        mix-blend-mode: luminosity;
-    }
-    .aside-nav i{
-        font-size: 3em;
-    }
-    a:hover i:before,a.active i{
-        font-size: 60px; 
-    }
-    .aside-nav section {
-        display: none;
-        left: -230px;
-        top: -10px;
-        width: 200px;
-        padding: 10px 0;
-        font-size: 2em;
-    }
-    #corrupto{
-        top: 10px;
-    }
-
 }
 
 @keyframes cursor {
