@@ -36,7 +36,7 @@ window.addEventListener('scroll', () => {
       clearTimeout(labelTimeout);
       labelTimeout = setTimeout(() => {
         labelEls[index].classList.remove('visible');
-      }, 20000); // 2000 milisegundos equivalen a 2 segundos
+      }, 2000); // 2000 milisegundos equivalen a 2 segundos
     } else {
       navLinkEl.classList.remove('active');
       labelEls[index].classList.remove('visible'); // Ocultar el texto correspondiente
