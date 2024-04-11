@@ -65,24 +65,21 @@ nav h2{
     text-align: center;
     display: grid;
     justify-content: center;
-    button {
+    a {
+        color: var(--teme2-color1);
+        text-decoration: none;
         margin-bottom: 2em;
         margin-top: 2em;
         mix-blend-mode: difference;
         border: none;
         background: none;
-        color: var(--teme3-color5);
         position: relative;
         display: grid;
         justify-content: center;
       }
-    a {
-        color: var(--teme2-color1);
-        text-decoration: none
-      }
     i {
         display: flex;
-        font-size: 20px;
+        font-size: 25px;
         border: none;
         align-items: center;
         height: 30px;
@@ -101,8 +98,8 @@ nav h2{
       }
 
 }
-button:hover i:before,a.active i{
-  font-size: 30px; 
+a:hover i:before,a.active i{
+  font-size: 35px; 
   color: var(--teme3-color2);
   display: inline-block;
 }
@@ -447,7 +444,7 @@ aside p{
         mix-blend-mode: luminosity;
     }
     
-    .aside-nav button {
+    .aside-nav a {
         margin: 0; 
         width: auto; 
     }
@@ -457,9 +454,9 @@ aside p{
     }
     .aside-nav section {
         display: none;
-        left: -40px;
+        left: -45px;
         top: -50px;
-        width: 100px;
+        width: 120px;
         padding: 10px 0;
     }
     .typing-text{
@@ -473,7 +470,7 @@ aside p{
     .aside-nav{
         top: 30vh;
     }
-    .aside-nav button {
+    .aside-nav a {
         margin-bottom: 10px;
         margin-top: 10px;
     }
@@ -532,7 +529,7 @@ aside p{
     .aside-nav i{
         font-size: 3em;
     }
-    button:hover i:before,a.active i{
+    a:hover i:before,a.active i{
         font-size: 60px; 
     }
     .aside-nav section {
