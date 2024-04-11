@@ -391,6 +391,7 @@ aside p{
     margin-top: 0px;
     display: inline-block;
     color: var(--teme3-color1);
+    width: fit-content;
 
 }
 @media (min-width: 1400px) {
