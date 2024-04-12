@@ -1,12 +1,18 @@
 :root{
-    --teme-color2: #05071E;
-    --teme-color4: #C6B36C;
-    --teme2-color1: #cfa713; 
-    --teme2-color2: #230e6a;
-    --teme3-color1:#880606; 
-    --teme3-color2:#d53d0c; 
-    --teme3-color4: #231d1e;
-    --teme3-color5: #fcfcfc; 
+    --teme-color1: #05071E;
+    --teme-color2: #C6B36C;
+    --teme-color3: #cfa713; 
+    --teme-color4: #230e6a;
+    --teme-color5:#880606; 
+    --teme-color6:#d53d0c; 
+    --teme-color7: #231d1e;
+    --teme-color8: #fcfcfc; 
+
+    --teme2-color1: #021308;
+    --teme2-color2: #2F4D3A; /* Este para fondos no */
+    --teme2-color3: #113B20;
+    --teme2-color4: #678270;
+    --teme2-color5: #2C342F;
 }
 
 *{
@@ -19,8 +25,8 @@ body{
     overflow-x: hidden;
 }
 .white-mode{
-    color: var(--teme-color2);
-    background-color: var(--teme2-color1);
+    color: var(--teme-color1);
+    background-color: var(--teme-color3);
 }
 .dark-mode{
     color: #eee;
@@ -54,9 +60,57 @@ nav ul{
 nav h2{
     font-size: 1.5em;
 }
+#change-color{
+    position: fixed;
+    top: 0;
+    right: 1.1em;
+    display: grid;
+    text-align: center;
+    padding: 5px;
+    mix-blend-mode: difference;
+    button{
+        width: 70px;
+        height: 90px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+}
+#change-color i {
+    font-size: 2em;
+    border-radius: 50%;
+    background: var(--teme-color7);
+    mix-blend-mode: lighten;
+    width: 10px;
+    height: 10px;
+    padding: 1em;
+    justify-content: center;
+    display: grid;
+    align-content: center;
+    margin-bottom: 5px;
+    color: var(--teme-color1);
+    transition: opacity .1s ease-out;
+}
+#change-color:hover i:before{
+    color:var(--teme-color3);
+}
+#change-color section{
+    position: absolute;
+    top: 0;
+    right: 5px;
+    padding: 5px;
+    font-family: 'Rosewind regular';
+    color: var(--teme-color2);
+}
+.hidden{
+    display: none; 
+}
 .aside-nav {
 	width: 40px;
-	background:var(--teme3-color4);
+	background:var(--teme-color7);
 	position: fixed;
 	top: 30vh;
 	right: 2em;
@@ -66,7 +120,7 @@ nav h2{
     display: grid;
     justify-content: center;
     a {
-        color: var(--teme2-color1);
+        color: var(--teme-color3);
         text-decoration: none;
         margin-bottom: 2em;
         margin-top: 2em;
@@ -86,7 +140,7 @@ nav h2{
         transition: font-size 0.2s ease-out;
       }
     section {
-        background: var(--teme3-color1);
+        background: var(--teme-color5);
         position: absolute;
         right: 4em;
         top: 0;
@@ -100,13 +154,13 @@ nav h2{
 }
 a:hover i:before,a.active i{
   font-size: 35px; 
-  color: var(--teme3-color2);
+  color: var(--teme-color6);
   display: inline-block;
 }
 .nav-link:hover .nav-label {
     display: inline-block; 
     font-size: 30px; 
-    color: var(--teme3-color2);
+    color: var(--teme-color6);
     margin: 0px; 
 }
 .nav-label {
@@ -120,7 +174,6 @@ a:hover i:before,a.active i{
 header{
     min-height: 30em;
     position: relative;
-    flex-wrap: wrap;
 }
 h1{
     font-family: 'Milker';
@@ -131,7 +184,7 @@ h1{
 h2{
     font-family: 'Rosewind regular';
     font-size: 2em;
-    color: var(--teme3-color5);
+    color: var(--teme-color8);
 }
 h3{
     font-family: 'Rosewind regular';
@@ -150,7 +203,7 @@ header .right-column{
     background-size: contain;
 }
 .experience{
-    background: var(--teme-color2);
+    background: var(--teme-color1);
     text-align: center;
     padding: 10em 15em;
     position: relative;
@@ -172,9 +225,9 @@ header .right-column{
     width: 20em;
     height: 12em;
     padding: 15px;
-    border: 1px solid var(--teme3-color5);
+    border: 1px solid var(--teme-color8);
     mix-blend-mode: difference;
-    color:var(--teme3-color5);
+    color:var(--teme-color8);
 }
 .exp time{
     font-size: 15px;
@@ -186,12 +239,12 @@ main{
     padding: 5em 0px;
     display: flex;
     justify-content: space-between;
-    background: var(--teme-color4);
+    background: var(--teme-color2);
     position: relative;
     flex-wrap: wrap;
 }
 main-i{
-    background: var(--teme2-color2);
+    background: var(--teme-color4);
 }
 .i-content{
     padding: 7em;
@@ -217,7 +270,7 @@ main-i{
 }
 .left-column p {
     padding-top: 2em;
-    color: var(--teme3-color5);
+    color: var(--teme-color8);
 }
 .i-left-column{
     flex:1;
@@ -233,10 +286,10 @@ main-i{
 .typing-text::after{
     content: '';
     position: absolute;
-    background: var(--teme2-color1);
+    background: var(--teme-color3);
     width: calc(100% + 8px);
     height: 100%;
-    border-left: 2px solid var(--teme3-color4);
+    border-left: 2px solid var(--teme-color7);
     right: -8px;
     top: -6px;
     animation: cursor .6s infinite, typing 20s steps(14) infinite;
@@ -245,7 +298,7 @@ main-i{
 	width: 150px;
 	height: 30px;
 	font-family: 'Rosewind regular';
-	background: var(--teme3-color1);
+	background: var(--teme-color5);
 	font-size: 20px;
     color: var(--teme3-color3);
     border: none;
@@ -258,7 +311,7 @@ main-i{
     bottom: -50px;
     text-align: center;
     margin-top: -100px;
-    color: var(--teme3-color2);
+    color: var(--teme-color6);
     padding-bottom: 20px;
 }
 .social i{
@@ -287,7 +340,7 @@ main-i{
     overflow: hidden;
     cursor: pointer;
     position: relative;
-    color: var(--teme3-color4);
+    color: var(--teme-color7);
     margin: 5px;
 
     img{
@@ -302,11 +355,11 @@ main-i{
     }
     .tag{
         padding: 4px 8px;
-        border: 1px solid var(--teme2-color1);
+        border: 1px solid var(--teme-color3);
         border-radius: 50px;
         font-size: 12px;
         font-weight: 600;
-        color: var(--teme3-color4);
+        color: var(--teme-color7);
         position: absolute;
         opacity: 0;
         max-width: 80%;
@@ -339,8 +392,8 @@ main-i{
         text-align: center;
         font-size: 28px;
         word-break:break-all;
-        background: var(--teme3-color4);
-        color: var(--teme3-color5);
+        background: var(--teme-color7);
+        color: var(--teme-color8);
     }
     .card_details p, a{
         font-family: 'milker';
@@ -362,13 +415,13 @@ main-i{
     &:hover h2{
         inset: auto auto 150px 0px;
         transition: inset .3s ease-out;
-        color: var(--teme3-color5);
+        color: var(--teme-color8);
         background: #16161600;
     }
     &:hover  p, &:hover  a{
         opacity: 1;
         transition: opacity .5s .1s ease-in;
-        color: var(--teme3-color5);
+        color: var(--teme-color8);
     }
     &:hover img{
         transition: opacity .3s ease-in;
@@ -382,7 +435,7 @@ aside p{
     font-size: 150px;
     font-family: 'Milker';
     mix-blend-mode: difference;
-    -webkit-text-stroke: 1px var(--teme3-color1);
+    -webkit-text-stroke: 1px var(--teme-color5);
     pointer-events: none;
 }
 .typing-text{
@@ -390,9 +443,61 @@ aside p{
     height: 30px;
     margin-top: 0px;
     display: inline-block;
-    color: var(--teme3-color1);
+    color: var(--teme-color5);
     width: fit-content;
 
+}
+.darks{
+    .white-mode{
+        color:var(--teme-color8);
+    }
+    header, .typing-text::after{
+        background-color: var(--teme2-color1);
+    }
+    .typing-text{
+        color: var(--teme-color6);
+    }
+    .social{
+        color: var(--teme-color8);
+    }
+    .social button{
+        background-color: var(--teme-color3);
+    }
+    header .right-column{
+        background-image: url(./img/Daniel_Velasquez-dark-modexl.webp);
+    }
+    .experience{
+        background-color: var(--teme2-color5);
+    }
+    aside p {
+        -webkit-text-stroke: 1px var(--teme-color6);
+        mix-blend-mode: lighten;
+    }
+    .aside-nav{
+        background-color: var(--teme2-color2);
+    }
+    .aside-nav a{
+        color: var(--teme-color8);
+    }
+    .aside-nav section{
+        background-color: var(--teme-color6);
+    }
+    a:hover i::before, a.active i{
+        color: var(--teme-color3);
+    }
+    #change-color section{
+        color: var(--teme-color8);
+    }
+    #change-color i{
+        background-color: var(--teme2-color2);
+        color:var(--teme-color2)
+    }
+    main{
+        background-color: var(--teme-color7);
+    }
+    main-i{
+        background-color: var(--teme2-color3);
+    }
 }
 @media (min-width: 1400px) {
     h1{
@@ -499,7 +604,7 @@ aside p{
     }
     aside p {
         font-size: 70px;
-        bottom: 85vw;
+        bottom: 80vw;
     }
     .aside-nav {
         width: 100vw;
