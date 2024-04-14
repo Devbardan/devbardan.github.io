@@ -5,28 +5,29 @@ const toggleButton = document.getElementById("toggle-button");
 const toogles = document.querySelectorAll('.toogle');
 const body = document.querySelector('body');
 
-function loadDarksMode(){
-  const darksModeOn = localStorage.getItem('darksOn') === 'true';
-    if (darksModeOn) {
-      body.classList.add('darks');
+
+function loadTheme() {
+    const darkModeOn = localStorage.getItem('data-theme') === 'dark';
+    if (darkModeOn) {
+        body.setAttribute('data-theme', 'dark');
+        toogles[0].classList.add('hidden');
+        toogles[1].classList.remove('hidden');
+        
+    } else {
+        body.setAttribute('data-theme', 'light');
+        toogles[0].classList.remove('hidden');
+        toogles[1].classList.add('hidden');
     }
-}
-function loadLigthMode(){
-  const ligthModeOn = localStorage.getItem('darksOn') === 'false';
-  if (!ligthModeOn){
-    body.classList.remove('darks');
-  }
 }
 
 toggleButton.onclick = function() {
   toogles.forEach(toggle => {
-    toggle.classList.toggle('hidden');
-    let darksOn = toggle.classList.contains('hidden');
-    localStorage.setItem('darksOn', darksOn);
+      toggle.classList.toggle('hidden');
   });
-  document.body.classList.toggle('darks');
+  const darkModeOn = body.getAttribute('data-theme') === 'dark';
+  body.setAttribute('data-theme', darkModeOn ? 'light' : 'dark');
+  localStorage.setItem('data-theme', darkModeOn ? 'light' : 'dark');
 };
-
 
 navLinkEls.forEach((navLinkEl, index) => {
   navLinkEl.addEventListener('mouseenter', () => {
@@ -68,4 +69,4 @@ window.addEventListener('scroll', () => {
     }
   });
 });
-loadDarksMode();
+loadTheme();

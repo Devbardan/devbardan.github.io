@@ -9,7 +9,7 @@
     --teme-color8: #fcfcfc; 
 
     --teme2-color1: #021308;
-    --teme2-color2: #2F4D3A; /* Este para fondos no */
+    --teme2-color2: #2F4D3A;
     --teme2-color3: #113B20;
     --teme2-color4: #678270;
     --teme2-color5: #2C342F;
@@ -24,15 +24,6 @@
 body{
     overflow-x: hidden;
 }
-.white-mode{
-    color: var(--teme-color1);
-    background-color: var(--teme-color3);
-}
-.dark-mode{
-    color: #eee;
-    background-color: var(--main-black-color);
-}
-
 @font-face {
     font-family: 'Rosewind regular';
     src: url('font/Rosewind-Regular.otf') format('truetype');
@@ -45,6 +36,12 @@ body{
     font-style: normal;
     font-weight: normal;
 }
+.dark-mode{
+    color: #eee;
+    background-color: var(--main-black-color);
+}
+
+
 nav{
     margin: auto;
     border-bottom: 2px solid black;
@@ -79,10 +76,12 @@ nav h2{
         cursor: pointer;
     }
 }
+#change-color:hover i{
+    transform: scale(0.8);
+}
 #change-color i {
     font-size: 2em;
     border-radius: 50%;
-    background: var(--teme-color7);
     mix-blend-mode: lighten;
     width: 10px;
     height: 10px;
@@ -91,11 +90,7 @@ nav h2{
     display: grid;
     align-content: center;
     margin-bottom: 5px;
-    color: var(--teme-color1);
     transition: opacity .1s ease-out;
-}
-#change-color:hover i:before{
-    color:var(--teme-color3);
 }
 #change-color section{
     position: absolute;
@@ -103,24 +98,21 @@ nav h2{
     right: 5px;
     padding: 5px;
     font-family: 'Rosewind regular';
-    color: var(--teme-color2);
 }
 .hidden{
     display: none; 
 }
 .aside-nav {
-	width: 40px;
-	background:var(--teme-color7);
-	position: fixed;
-	top: 30vh;
-	right: 2em;
+    width: 40px;
+    position: fixed;
+    top: 30vh;
+    right: 2em;
     border-radius: 20px;
     mix-blend-mode: difference;
     text-align: center;
     display: grid;
     justify-content: center;
     a {
-        color: var(--teme-color3);
         text-decoration: none;
         margin-bottom: 2em;
         margin-top: 2em;
@@ -140,7 +132,6 @@ nav h2{
         transition: font-size 0.2s ease-out;
       }
     section {
-        background: var(--teme-color5);
         position: absolute;
         right: 4em;
         top: 0;
@@ -153,14 +144,12 @@ nav h2{
 
 }
 a:hover i:before,a.active i{
-  font-size: 35px; 
-  color: var(--teme-color6);
+  transform: scale(1.2);
   display: inline-block;
 }
 .nav-link:hover .nav-label {
     display: inline-block; 
-    font-size: 30px; 
-    color: var(--teme-color6);
+    font-size: 30px;
     margin: 0px; 
 }
 .nav-label {
@@ -184,7 +173,6 @@ h1{
 h2{
     font-family: 'Rosewind regular';
     font-size: 2em;
-    color: var(--teme-color8);
 }
 h3{
     font-family: 'Rosewind regular';
@@ -203,7 +191,6 @@ header .right-column{
     background-size: contain;
 }
 .experience{
-    background: var(--teme-color1);
     text-align: center;
     padding: 10em 15em;
     position: relative;
@@ -225,9 +212,7 @@ header .right-column{
     width: 20em;
     height: 12em;
     padding: 15px;
-    border: 1px solid var(--teme-color8);
     mix-blend-mode: difference;
-    color:var(--teme-color8);
 }
 .exp time{
     font-size: 15px;
@@ -239,12 +224,8 @@ main{
     padding: 5em 0px;
     display: flex;
     justify-content: space-between;
-    background: var(--teme-color2);
     position: relative;
     flex-wrap: wrap;
-}
-main-i{
-    background: var(--teme-color4);
 }
 .i-content{
     padding: 7em;
@@ -252,6 +233,7 @@ main-i{
     justify-content: space-around;
     position: relative;
     flex-wrap: wrap;
+    pointer-events: none;
 }
 .content{
     display: flex;
@@ -270,7 +252,6 @@ main-i{
 }
 .left-column p {
     padding-top: 2em;
-    color: var(--teme-color8);
 }
 .i-left-column{
     flex:1;
@@ -286,32 +267,27 @@ main-i{
 .typing-text::after{
     content: '';
     position: absolute;
-    background: var(--teme-color3);
     width: calc(100% + 8px);
     height: 100%;
-    border-left: 2px solid var(--teme-color7);
     right: -8px;
     top: -6px;
     animation: cursor .6s infinite, typing 20s steps(14) infinite;
 }
 .social button{
-	width: 150px;
-	height: 30px;
-	font-family: 'Rosewind regular';
-	background: var(--teme-color5);
-	font-size: 20px;
-    color: var(--teme3-color3);
+    width: 150px;
+    height: 30px;
+    font-family: 'Rosewind regular';
+    font-size: 20px;
     border: none;
     bottom: -50px;
     mix-blend-mode: difference;
 }
 .social{
-    font-size: 30px;
+    font-size: 25px;
     right: 180px;
     bottom: -50px;
     text-align: center;
     margin-top: -100px;
-    color: var(--teme-color6);
     padding-bottom: 20px;
 }
 .social i{
@@ -340,7 +316,6 @@ main-i{
     overflow: hidden;
     cursor: pointer;
     position: relative;
-    color: var(--teme-color7);
     margin: 5px;
 
     img{
@@ -355,11 +330,9 @@ main-i{
     }
     .tag{
         padding: 4px 8px;
-        border: 1px solid var(--teme-color3);
         border-radius: 50px;
         font-size: 12px;
         font-weight: 600;
-        color: var(--teme-color7);
         position: absolute;
         opacity: 0;
         max-width: 80%;
@@ -392,8 +365,6 @@ main-i{
         text-align: center;
         font-size: 28px;
         word-break:break-all;
-        background: var(--teme-color7);
-        color: var(--teme-color8);
     }
     .card_details p, a{
         font-family: 'milker';
@@ -415,13 +386,11 @@ main-i{
     &:hover h2{
         inset: auto auto 150px 0px;
         transition: inset .3s ease-out;
-        color: var(--teme-color8);
         background: #16161600;
     }
     &:hover  p, &:hover  a{
         opacity: 1;
         transition: opacity .5s .1s ease-in;
-        color: var(--teme-color8);
     }
     &:hover img{
         transition: opacity .3s ease-in;
@@ -435,7 +404,6 @@ aside p{
     font-size: 150px;
     font-family: 'Milker';
     mix-blend-mode: difference;
-    -webkit-text-stroke: 1px var(--teme-color5);
     pointer-events: none;
 }
 .typing-text{
@@ -443,62 +411,167 @@ aside p{
     height: 30px;
     margin-top: 0px;
     display: inline-block;
-    color: var(--teme-color5);
     width: fit-content;
 
 }
-.darks{
-    .white-mode{
+[data-theme="light"] {
+    .left-column p, .card_details p, h2{
         color:var(--teme-color8);
     }
-    header, .typing-text::after{
-        background-color: var(--teme2-color1);
-    }
-    .typing-text{
-        color: var(--teme-color6);
-    }
-    .social{
-        color: var(--teme-color8);
-    }
-    .social button{
-        background-color: var(--teme-color3);
-    }
-    header .right-column{
-        background-image: url(./img/Daniel_Velasquez-dark-modexl.webp);
-    }
-    .experience{
-        background-color: var(--teme2-color5);
-    }
-    aside p {
-        -webkit-text-stroke: 1px var(--teme-color6);
-        mix-blend-mode: lighten;
-    }
-    .aside-nav{
-        background-color: var(--teme2-color2);
-    }
-    .aside-nav a{
-        color: var(--teme-color8);
-    }
-    .aside-nav section{
-        background-color: var(--teme-color6);
-    }
-    a:hover i::before, a.active i{
+    #change-color i:hover{
         color: var(--teme-color3);
     }
-    #change-color section{
+    .white-mode{
+        color: var(--teme-color1);
+        background-color: var(--teme-color3);
+    }
+    header, .typing-text::after{
+        background: var(--teme-color3);
+    }
+    .typing-text{
+        color: var(--teme-color5);
+    }
+    .social{
+        color: var(--teme-color6);
+    }
+    .social button{
+        color: var(--teme3-color3);
+        background-color: var(--teme-color5);
+    }
+    header .right-column{
+        background-image: url(./img/Daniel_Velasquez-white-modexl.webp);
+    }
+    .experience{
+        background: var(--teme-color1);
+        color:var(--teme-color8);
+    }
+    aside p {
+        -webkit-text-stroke: 1px var(--teme-color5);
+        mix-blend-mode:difference;
+    }
+    .aside-nav{
+        background:var(--teme-color7);
+    }
+    .aside-nav a{
+        color: var(--teme-color3);
+    }
+    .aside-nav section{
+        background: var(--teme-color5);
+    }
+    a:hover i::before, a.active i{
+        color: var(--teme-color6);
+    }
+    .social a{
         color: var(--teme-color8);
     }
+    #change-color section{
+        color: var(--teme-color2);
+    }
     #change-color i{
-        background-color: var(--teme2-color2);
-        color:var(--teme-color2)
+        background: var(--teme-color7);
+        color: var(--teme-color1);
+    }
+    #change-color:hover i:before{
+        color:var(--teme-color3);
     }
     main{
-        background-color: var(--teme-color7);
+        background: var(--teme-color2);
+    }
+    .card_details h2{
+        background-color:var(--teme-color2);
     }
     main-i{
-        background-color: var(--teme2-color3);
+        background: var(--teme-color4);
+    }
+    @media (max-width :600px){
+        header .right-column{
+            background-image: url(./img/Daniel_Velasquez-white-mode.webp);
+        }
     }
 }
+[data-theme="dark"] {
+        nav{
+            border-bottom: 1px solid var(--teme-color3);
+            border-left: 1px solid var(--teme-color3);
+            border-right: 1px solid var(--teme-color3);
+        }
+        .left-column p, .card_details p, h2{
+            color:var(--teme-color8);
+        }
+        .white-mode{
+            color:var(--teme-color8);
+        }
+        header, .typing-text::after{
+            background-color: var(--teme2-color1);
+        }
+        .typing-text{
+            color: var(--teme-color6);
+        }
+        .social{
+            color: var(--teme-color8);
+        }
+        .social button{
+            background-color: var(--teme-color3);
+        }
+        header .right-column{
+            background-image: url(./img/Daniel_Velasquez-dark-modexl.webp);
+        }
+        .experience{
+            background-color: var(--teme2-color5);
+            color:var(--teme-color8);
+        }
+        aside p {
+            -webkit-text-stroke: 1px var(--teme-color6);
+            mix-blend-mode: lighten;
+        }
+        .aside-nav{
+            background-color: var(--teme2-color2);
+        }
+        .aside-nav a{
+            color: var(--teme-color8);
+        }
+        .aside-nav section{
+            background-color: var(--teme-color6);
+        }
+        a:hover i::before, a.active i{
+            color: var(--teme-color3);
+        }
+        .social a{
+            color: var(--teme-color8);
+        }
+        .social button{
+            color:var(--teme2-color3);
+            background-color: var(--teme-color2);
+        }
+        #change-color section{
+            color: var(--teme-color8);
+        }
+        #change-color i{
+            background-color: var(--teme2-color2);
+            color:var(--teme-color);
+        }
+        #change-color:hover i:before{
+            color:var(--teme-color3);
+        }
+        .card_details h2{
+            background-color:var(--teme-color7);
+        }
+        .card &:hover h2{
+            color:red;
+        }
+        main{
+            background-color: var(--teme-color7);
+        }
+        main-i{
+            background-color: var(--teme2-color3);
+        }
+        @media (max-width :600px){
+            header .right-column{
+                background-image: url(./img/Daniel_Velasquez-dark-mode.webp);
+            }
+        }
+}
+
 @media (min-width: 1400px) {
     h1{
         font-size: 6em;
@@ -575,7 +648,7 @@ aside p{
     }
     h1{
         font-size: 2.5em;
-        line-height: 30px;
+        line-height: 33px;
 
     }
     h3{
@@ -641,14 +714,10 @@ aside p{
     .content{
         padding: 20px 0;
     }
-}
-@media (max-height: 500px) {
-    .aside-nav{
-        top: 30vh;
-    }
-    .aside-nav a {
-        margin-bottom: 10px;
-        margin-top: 10px;
+    #change-color button{
+        transform: scale(0.8);
+        top: 12px;
+        right: -25px;
     }
 }
 
