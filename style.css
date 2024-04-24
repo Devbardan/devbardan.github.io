@@ -192,7 +192,7 @@ header .right-column{
 }
 .experience{
     text-align: center;
-    padding: 10em 15em;
+    padding: 5em 10em;
     position: relative;
     flex-wrap: wrap;
 }
@@ -240,7 +240,7 @@ main{
     justify-content: space-around;
     position: relative;
     flex-wrap: wrap;
-    padding: 7em 9em;
+    padding: 2em 9em;
 }
 .left-column{
     flex: 1;
@@ -317,6 +317,7 @@ main{
     cursor: pointer;
     position: relative;
     margin: 5px;
+    transition: color 0.2s ease-out;
 
     img{
         position: absolute;
@@ -337,20 +338,6 @@ main{
         opacity: 0;
         max-width: 80%;
         transition: opacity .3s ease-out;
-    }
-    .card_details button{
-        border: none;
-        padding: 12px 24px;
-        border-radius: 50px;
-        font-weight: 600;
-        color: #0077ff;
-        background-color: red;
-        margin: 0 auto;
-        display: block;
-        cursor: pointer;
-        position: absolute;
-        opacity: 0;
-        transition: opaccity .3s ease-out;
     }
     .card_details{
         padding: 16px 8px 8px 8px;
@@ -373,10 +360,12 @@ main{
         max-width: 80%;
         transition: opacity .3s ease-out;
         font-size: 12px;
-        word-break:break-all;
     }
     .card_details p{
-        inset: auto auto 80px 25px;
+        inset: auto auto 40% 25px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
     }
     .card_details a{
         inset: auto auto 40px 30px;
@@ -384,7 +373,7 @@ main{
         text-decoration: none;
     }
     &:hover h2{
-        inset: auto auto 150px 0px;
+        inset: auto auto 85% 0px;
         transition: inset .3s ease-out;
         background: #16161600;
     }
@@ -395,6 +384,27 @@ main{
     &:hover img{
         transition: opacity .3s ease-in;
         opacity: .1;
+    }
+}
+.little-card{
+    width: 10rem;
+    height: 10rem;
+    .card_details h2{
+        font-size: 1em;
+    }
+    .card_details p{
+        inset: auto auto 30% 25px;
+    }
+}
+.card-active{
+    width: 30rem;
+    height: 21.9rem;
+    cursor: auto;
+    .card_details p{
+        inset: auto auto 30% 25px;
+        white-space:unset;
+        text-overflow:unset;
+        overflow:auto
     }
 }
 aside p{
@@ -445,9 +455,13 @@ aside p{
         background: var(--teme-color1);
         color:var(--teme-color8);
     }
-    aside p {
-        -webkit-text-stroke: 1px var(--teme-color5);
-        mix-blend-mode:difference;
+    aside .a {
+        text-shadow: -1px -1px var(--teme2-color3), 1px 1px var(--teme-color5);
+        mix-blend-mode: exclusion;
+    }
+    aside .b {
+        text-shadow: 2px 2px var(--teme2-color3), -2px -1px var(--teme-color1);
+        mix-blend-mode: difference;
     }
     .aside-nav{
         background:var(--teme-color7);

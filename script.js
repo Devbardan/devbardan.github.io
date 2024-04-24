@@ -1,9 +1,11 @@
 const navLinkEls = document.querySelectorAll('.nav_link');
 const sectionEls = document.querySelectorAll('.sections');
 const labelEls = document.querySelectorAll('.nav-label');
-const toggleButton = document.getElementById("toggle-button");
+const toggleButton = document.getElementById('toggle-button');
 const toogles = document.querySelectorAll('.toogle');
 const body = document.querySelector('body');
+const cards = document.querySelectorAll('.card')
+const activeCardClass = 'card-active';
 
 
 function loadTheme() {
@@ -54,6 +56,24 @@ window.addEventListener('scroll', () => {
       currentSection = sectionEl.id;
     }
   });
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+        // Elimina la clase 'card-active' de todas las tarjetas
+        cards.forEach(c => c.classList.remove(activeCardClass,'little-card'));
+
+        // Agrega la clase 'card-active' a la tarjeta clickeada
+        card.classList.add(activeCardClass);
+
+        // Mueve la tarjeta clickeada al principio del contenedor
+        card.parentNode.prepend(card);
+        cards.forEach(c => {
+          if (c !== card) {
+              c.classList.add('little-card');
+          }
+      });
+    });
+});
 
   navLinkEls.forEach((navLinkEl, index) => {
     if (navLinkEl.href.endsWith(`#${currentSection}`)) {
