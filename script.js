@@ -57,24 +57,25 @@ window.addEventListener('scroll', () => {
     }
   });
 
+  let activeCard = null;
+
   cards.forEach(card => {
-    card.addEventListener('click', () => {
-        // Elimina la clase 'card-active' de todas las tarjetas
-        cards.forEach(c => c.classList.remove(activeCardClass,'little-card'));
-
-        // Agrega la clase 'card-active' a la tarjeta clickeada
-        card.classList.add(activeCardClass);
-
-        // Mueve la tarjeta clickeada al principio del contenedor
-        card.parentNode.prepend(card);
-        cards.forEach(c => {
-          if (c !== card) {
-              c.classList.add('little-card');
+      card.addEventListener('click', () => {
+          if (card === activeCard) {
+              return;
           }
+          cards.forEach(c => c.classList.remove(activeCardClass, 'little-card'));
+          card.classList.add(activeCardClass);
+          card.parentNode.prepend(card);
+          cards.forEach(c => {
+              if (c !== card) {
+                  c.classList.add('little-card');
+              }
+          });
+          activeCard = card;
       });
-    });
-});
-
+  });
+  
   navLinkEls.forEach((navLinkEl, index) => {
     if (navLinkEl.href.endsWith(`#${currentSection}`)) {
       navLinkEl.classList.add('active');

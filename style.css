@@ -393,7 +393,7 @@ main{
         font-size: 1em;
     }
     .card_details p{
-        inset: auto auto 30% 25px;
+        inset: auto auto 40% 25px;
     }
 }
 .card-active{
@@ -424,6 +424,76 @@ aside p{
     width: fit-content;
 
 }
+/* INICIO EXP */ 
+  .CV-secondaryHeading {
+    position: relative;
+    margin: 0 0 2em;
+    text-transform: uppercase;
+  }
+  .CV-timeline {
+    position: relative;
+    margin: 0 0 0 0.5em;
+    padding-left: 1.5em;
+    border-left: solid 1px var(--teme-color3);
+    text-align: initial;
+  }
+  
+  .CV-timeline:last-of-type {
+    border-left-color: transparent;
+  }
+  
+  .CV-timeline:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -0.5em;
+    display: block;
+    width: 1em;
+    height: 1em;
+    background-color: var(--teme-color6);
+    border-radius: 50%;
+  }
+  
+  .CV-timeline-heading {
+    margin: 0;
+    padding-bottom: 0.5em;
+    line-height: 1em;
+    font-weight: normal;
+    -webkit-transform: translateY(-0.1em);
+    -ms-transform: translateY(-0.1em);
+    transform: translateY(-0.1em);
+  }
+  
+  .CV-timeline-heading-title {
+    line-height: 1;
+    color: var(--teme-color3);
+    font-style: italic;
+    text-transform: uppercase;
+  }
+  
+  .CV-timeline-heading-location {
+    font-size: 0.9em;
+  }
+  
+  .CV-timeline-heading-duration {
+    display: block;
+    font-size: 0.8em;
+    color: var(--teme2-color2);
+  }
+  
+  .CV-timeline-details {
+    display: block;
+    margin: 0;
+    padding-bottom: 2em;
+    padding: 0 0 2em 1em;
+    list-style: none;
+  }
+  
+  .CV-timeline-details-item {
+    margin-bottom: 0.5em;
+  }
+  /* End */
+  
 [data-theme="light"] {
     .left-column p, .card_details p, h2{
         color:var(--teme-color8);
@@ -684,6 +754,20 @@ aside p{
     }
     .experience{
         padding: 100px 0px;
+    }
+    .CV-jobs{
+        margin: 0px 50px
+    }
+    .card-active{
+        width: 17rem;
+        height: 15rem;
+    }
+    .little-card{
+        width: 7rem;
+        height: 5rem;
+    }
+    .left-column{
+        padding: 30px 50px;
     }
     .center-column ul li div{
         width: 300px;
