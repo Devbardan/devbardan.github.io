@@ -424,7 +424,6 @@ aside p{
     width: fit-content;
 
 }
-/* INICIO EXP */ 
   .CV-secondaryHeading {
     position: relative;
     margin: 0 0 2em;
@@ -492,7 +491,6 @@ aside p{
   .CV-timeline-details-item {
     margin-bottom: 0.5em;
   }
-  /* End */
   
 [data-theme="light"] {
     .left-column p, .card_details p, h2{
@@ -818,6 +816,14 @@ aside p{
         right: -25px;
     }
 }
+
+@media screen and (min-width: 700px) {
+    .proyects-column{
+        min-width: 500px;
+    }
+}
+    
+
 
 @keyframes cursor {
     to{
