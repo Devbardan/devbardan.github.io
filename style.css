@@ -387,7 +387,7 @@ main{
     }
 }
 .little-card{
-    width: 10rem;
+    max-width: 10rem;
     height: 10rem;
     .card_details h2{
         font-size: 1em;
@@ -759,11 +759,11 @@ aside p{
         margin: 0px 50px
     }
     .card-active{
-        width: 17rem;
+        min-width: 17rem;
         height: 15rem;
     }
     .little-card{
-        width: 7rem;
+        min-width: 5rem;
         height: 5rem;
     }
     .left-column{
