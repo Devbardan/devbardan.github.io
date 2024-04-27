@@ -567,7 +567,7 @@ aside p{
     }
     @media (max-width :600px){
         header .right-column{
-            background-image: url(./img/Daniel_Velasquez-white-mode.webp);
+            background-image: url(./img/Daniel_Velasquez-white-modexl.webp);
         }
     }
 }
@@ -604,7 +604,7 @@ aside p{
         }
         aside p {
             -webkit-text-stroke: 1px var(--teme-color6);
-            mix-blend-mode: lighten;
+            mix-blend-mode: plus-lighter;
         }
         .aside-nav{
             background-color: var(--teme2-color2);
@@ -649,7 +649,7 @@ aside p{
         }
         @media (max-width :600px){
             header .right-column{
-                background-image: url(./img/Daniel_Velasquez-dark-mode.webp);
+                background-image: url(./img/Daniel_Velasquez-dark-modexl.webp);
             }
         }
 }
@@ -737,10 +737,10 @@ aside p{
         font-size: 1.5em;
     }
     .i-left-column{
-        padding: 10px;
+        padding: 10px 60px;
     }
     header .right-column{
-        background-image: url("./img/Daniel_Velasquez-white-mode.webp");
+        background-image: url("./img/Daniel_Velasquez-white-modexl.webp");
     }
     .right-column{
         padding: 100px 0;
