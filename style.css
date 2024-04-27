@@ -297,7 +297,7 @@ main{
     flex:2;
     display: flex;
     position: relative;
-    min-width: 250px;
+    min-width: 300px;
     flex-wrap: wrap;
     width: auto;
     justify-content: center;
