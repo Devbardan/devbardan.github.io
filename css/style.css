@@ -1932,8 +1932,11 @@ body:not(.is-right-handed) #void-close-btn {
     z-index: 10000;
     text-align: center;
     color: #fff;
-    pointer-events: none;
     font-family: 'Space Grotesk', sans-serif;
-    opacity: 0.6;
     font-size: 14px;
+    width: 70%;
+    max-width: 700px;
+    height: 50vh;
+    max-height: 400px;
+    min-height: 250px;
 }

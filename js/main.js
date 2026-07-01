@@ -1519,7 +1519,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const content = document.createElement('div');
         content.id = 'void-content';
-        content.textContent = '\u25CB esperando...';
         overlay.appendChild(content);
 
         document.body.appendChild(overlay);
@@ -1544,6 +1543,8 @@ document.addEventListener("DOMContentLoaded", () => {
             input.value = '';
             overlay.classList.remove('is-active');
             document.body.classList.remove('is-void-active');
+            const content = document.getElementById('void-content');
+            if (content && content._stopSkate) content._stopSkate();
             gsap.to(columns, {
                 scaleX: 0,
                 duration: 0.6,
@@ -1572,6 +1573,197 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
         setTimeout(function () { input.focus(); }, 800);
+        startSkateGame(document.getElementById('void-content'));
+    }
+
+    function startSkateGame(container) {
+        let gameAnim = null;
+        let gameState = 'idle';
+        let pos = 0;
+        const speed = 2.5;
+
+        const gameArea = document.createElement('div');
+        gameArea.id = 'skate-game-area';
+        Object.assign(gameArea.style, {
+            width: '100%', height: '100%',
+            display: 'flex', alignItems: 'flex-end', justifyContent: 'flex-start',
+            position: 'relative', overflow: 'hidden',
+            background: 'rgba(0,0,0,0.3)', borderRadius: '12px',
+        });
+
+        const instruction = document.createElement('div');
+        instruction.id = 'skate-instr';
+        instruction.textContent = 'Presiona TAB o haz click para empezar';
+        Object.assign(instruction.style, {
+            position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)',
+            color: '#fff', fontFamily: 'monospace', fontSize: '14px', opacity: '0.5',
+            textAlign: 'center', pointerEvents: 'none', zIndex: '2',
+        });
+
+        const skyline = document.createElement('div');
+        Object.assign(skyline.style, {
+            position: 'absolute', bottom: '60px', left: '0', right: '0', height: '40px',
+            pointerEvents: 'none', zIndex: '0',
+        });
+
+        const ground = document.createElement('div');
+        Object.assign(ground.style, {
+            position: 'absolute', bottom: '0', left: '0', right: '0', height: '60px',
+            background: 'rgba(255,255,255,0.05)', borderTop: '1px solid rgba(255,255,255,0.1)',
+            pointerEvents: 'none', zIndex: '0',
+        });
+
+        const skater = document.createElement('div');
+        skater.id = 'skater';
+        Object.assign(skater.style, {
+            position: 'absolute', bottom: '60px', left: '0',
+            width: '80px', height: '80px',
+            backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',
+            transition: 'none', zIndex: '1',
+            imageRendering: 'pixelated',
+            transform: 'translateX(0)',
+        });
+
+        function drawPlaceholder(state) {
+            const c = document.createElement('canvas');
+            c.width = 120; c.height = 120;
+            const ctx = c.getContext('2d');
+
+            const colors = {
+                idle: '#666', ride: '#4fc3f7', jump: '#66bb6a', flip: '#ffa726',
+            };
+            const color = colors[state] || '#888';
+
+            ctx.clearRect(0, 0, 120, 120);
+
+            // Ground line
+            ctx.strokeStyle = 'rgba(255,255,255,0.15)';
+            ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(0, 100); ctx.lineTo(120, 100); ctx.stroke();
+
+            // Skateboard
+            ctx.fillStyle = color;
+            ctx.fillRect(25, 90, 70, 8);
+            ctx.beginPath(); ctx.arc(32, 100, 5, 0, Math.PI * 2); ctx.fill();
+            ctx.beginPath(); ctx.arc(88, 100, 5, 0, Math.PI * 2); ctx.fill();
+
+            // Body
+            ctx.fillStyle = '#fff';
+            if (state === 'ride') {
+                ctx.fillRect(50, 45, 20, 35);
+                ctx.beginPath(); ctx.arc(60, 35, 14, 0, Math.PI * 2); ctx.fill();
+                // Arms
+                ctx.strokeStyle = '#fff'; ctx.lineWidth = 3;
+                ctx.beginPath(); ctx.moveTo(50, 55); ctx.lineTo(30, 65); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(70, 55); ctx.lineTo(90, 65); ctx.stroke();
+                // Legs
+                ctx.beginPath(); ctx.moveTo(55, 80); ctx.lineTo(45, 90); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(65, 80); ctx.lineTo(75, 90); ctx.stroke();
+            } else if (state === 'jump') {
+                ctx.fillRect(50, 30, 20, 30);
+                ctx.beginPath(); ctx.arc(60, 20, 14, 0, Math.PI * 2); ctx.fill();
+                ctx.strokeStyle = '#fff'; ctx.lineWidth = 3;
+                ctx.beginPath(); ctx.moveTo(50, 40); ctx.lineTo(30, 20); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(70, 40); ctx.lineTo(90, 20); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(55, 60); ctx.lineTo(45, 75); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(65, 60); ctx.lineTo(75, 75); ctx.stroke();
+            } else if (state === 'flip') {
+                ctx.fillRect(50, 35, 20, 25);
+                ctx.beginPath(); ctx.arc(60, 22, 14, 0, Math.PI * 2); ctx.fill();
+                ctx.strokeStyle = '#fff'; ctx.lineWidth = 3;
+                ctx.beginPath(); ctx.moveTo(50, 42); ctx.lineTo(30, 55); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(70, 42); ctx.lineTo(90, 30); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(55, 60); ctx.lineTo(40, 78); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(65, 60); ctx.lineTo(80, 78); ctx.stroke();
+                // Board flip trail
+                ctx.strokeStyle = color; ctx.lineWidth = 2; ctx.globalAlpha = 0.4;
+                ctx.beginPath(); ctx.ellipse(60, 90, 40, 10, 0, 0, Math.PI * 2); ctx.stroke();
+                ctx.globalAlpha = 1;
+            } else {
+                // idle
+                ctx.fillRect(50, 48, 20, 35);
+                ctx.beginPath(); ctx.arc(60, 36, 14, 0, Math.PI * 2); ctx.fill();
+                ctx.strokeStyle = '#fff'; ctx.lineWidth = 3;
+                ctx.beginPath(); ctx.moveTo(50, 58); ctx.lineTo(35, 68); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(70, 58); ctx.lineTo(85, 68); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(55, 83); ctx.lineTo(45, 92); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(65, 83); ctx.lineTo(75, 92); ctx.stroke();
+            }
+            // State label
+            ctx.fillStyle = 'rgba(255,255,255,0.25)';
+            ctx.font = '10px monospace';
+            ctx.textAlign = 'center';
+            ctx.fillText(state.toUpperCase(), 60, 115);
+
+            return c.toDataURL();
+        }
+
+        function setState(newState) {
+            if (gameState === newState && newState !== 'idle') return;
+            gameState = newState;
+            skater.style.backgroundImage = `url('${drawPlaceholder(newState)}')`;
+
+            if (newState === 'idle') {
+                instruction.style.display = 'block';
+                skater.style.display = 'none';
+            } else {
+                instruction.style.display = 'none';
+                skater.style.display = 'block';
+            }
+        }
+
+        function onInput(e) {
+            if (e.key === 'Tab') e.preventDefault();
+            if (!gameArea.isConnected) return;
+
+            if (gameState === 'idle') {
+                pos = 0;
+                skater.style.transform = 'translateX(0)';
+                setState('ride');
+                if (!gameAnim) gameAnim = requestAnimationFrame(tick);
+            } else if (gameState === 'ride') {
+                setState('jump');
+            } else if (gameState === 'jump') {
+                setState('flip');
+            }
+        }
+
+        function tick() {
+            if (!gameArea.isConnected) { gameAnim = null; return; }
+            if (gameState !== 'idle') {
+                pos += speed;
+                skater.style.transform = `translateX(${pos}px)`;
+                const areaW = gameArea.clientWidth || 600;
+                if (pos > areaW + 20) {
+                    setState('idle');
+                    pos = 0;
+                    if (gameAnim) { cancelAnimationFrame(gameAnim); gameAnim = null; }
+                    return;
+                }
+            }
+            gameAnim = requestAnimationFrame(tick);
+        }
+
+        container.innerHTML = '';
+        container.style.cssText = 'padding:20px;width:100%;height:100%;display:flex;box-sizing:border-box;';
+        gameArea.appendChild(skyline);
+        gameArea.appendChild(ground);
+        gameArea.appendChild(skater);
+        gameArea.appendChild(instruction);
+        container.appendChild(gameArea);
+
+        setState('idle');
+
+        document.addEventListener('keydown', onInput);
+        gameArea.addEventListener('click', onInput);
+        gameArea.addEventListener('touchstart', onInput, { passive: true });
+        gameArea.style.cursor = 'pointer';
+
+        // Store cleanup
+        container._stopSkate = function () {
+            if (gameAnim) { cancelAnimationFrame(gameAnim); gameAnim = null; }
+            document.removeEventListener('keydown', onInput);
+        };
     }
 
     function initTerminal() {
