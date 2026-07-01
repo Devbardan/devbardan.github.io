@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="page_title_about">Sobre mí — DevelasqRoad</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<script>!function(){var e=localStorage.getItem("modoBio");null===e&&(e=window.matchMedia("(prefers-color-scheme: dark)").matches?"true":"false"),"true"===e&&document.body.classList.add("modo-bio-active")}();</script>
+
+  <div id="mode-expansion-overlay" class="expansion-overlay"></div>
+  <div id="giant-toggle-container" class="giant-toggle-wrap">
+    <div class="giant-switch">
+      <div class="giant-ball">
+        <svg id="morph-svg" viewBox="0 0 120 120" style="width:100%; height:100%; overflow:visible !important;">
+          <g id="orbit-rotation-wrapper" transform="rotate(-20 60 60)">
+            <defs>
+              <path id="textCirclePath" d="M60,60 m-35,0 a35,35 0 1,1 70,0 a35,35 0 1,1 -70,0" />
+              <path id="orbit-path" d="M -20,60 a 80,25 0 1,0 160,0 a 80,25 0 1,0 -160,0" />
+            </defs>
+            <g id="orbit-back-group" style="opacity: 0; pointer-events:none;">
+              <path d="M -20,60 a 80,25 0 1,1 160,0" fill="none" stroke="rgba(255,255,255,0.2)" stroke-dasharray="4 4" />
+              <circle id="ship-back" r="4" fill="#fff" />
+            </g>
+            <path id="morph-base" d="M60,10 a50,50 0 1,1 0,100 a50,50 0 1,1 0,-100" fill="#111" stroke="#000" stroke-width="3" />
+            <g id="morph-text-group" style="pointer-events:none;">
+              <text font-size="9" font-weight="900" fill="#F5F3CE" letter-spacing="1">
+                <textPath href="#textCirclePath" startOffset="5%">• SKATE • ROAD •</textPath>
+              </text>
+              <text font-size="9" font-weight="900" fill="#F5F3CE" letter-spacing="1">
+                <textPath href="#textCirclePath" startOffset="80%">STREET •</textPath>
+              </text>
+            </g>
+            <g id="morph-wheel-details">
+              <circle cx="60" cy="60" r="30" fill="#888" stroke="#000" stroke-width="2" />
+              <circle cx="60" cy="60" r="12" fill="#ddd" stroke="#000" stroke-width="2" />
+              <circle cx="60" cy="60" r="5" fill="#444" />
+            </g>
+            <g id="morph-craters" opacity="0">
+              <circle cx="40" cy="40" r="6" fill="#E0DDB5" stroke="#222" stroke-width="1" />
+              <circle cx="75" cy="65" r="7" fill="#E0DDB5" stroke="#222" stroke-width="1" />
+              <circle cx="60" cy="30" r="5" fill="#E0DDB5" stroke="#222" stroke-width="1" />
+              <circle cx="45" cy="70" r="4" fill="#E0DDB5" stroke="#222" stroke-width="1" />
+              <circle cx="70" cy="80" r="3" fill="#E0DDB5" stroke="#222" stroke-width="1" />
+            </g>
+            <g id="orbit-front-group" style="opacity: 0; pointer-events:none;">
+              <path d="M 140,60 a 80,25 0 1,1 -160,0" fill="none" stroke="rgba(255,255,255,0.2)" stroke-dasharray="4 4" />
+              <circle id="ship-front" r="6" fill="#00D2D3" />
+            </g>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="loader-overlay">
+    <div class="overlay-column"></div>
+    <div class="overlay-column"></div>
+    <div class="overlay-column"></div>
+    <div class="overlay-column"></div>
+  </div>
+
+  <section class="hero-header">
+    <div class="top-utility-bar">
+      <div class="lang-selector">
+        <button class="btn-lang active" data-lang="es">ES</button>
+        <button class="btn-lang" data-lang="en">EN</button>
+        <button class="btn-lang" data-lang="fr">FR</button>
+      </div>
+    </div>
+    <div class="hero-top-row">
+      <div class="header-group-cta">
+        <div class="cta-wrapper">
+          <span class="hero-subtitle">DevelasqRoad</span>
+          <a href="" id="btn-left" class="btn-main">
+            <span class="btn-main-name">Goofy</span>
+            <span class="btn-hint" data-i18n="btn_hint_left">diestro</span>
+          </a>
+          <a href="" id="btn-right" class="btn-main">
+            <span class="btn-main-name">Regular</span>
+            <span class="btn-hint" data-i18n="btn_hint_right">zurdo</span>
+          </a>
+        </div>
+      </div>
+      <div class="header-group-toggle">
+        <div class="toggle-container">
+          <span class="toggle-label" data-i18n="toggle_label_bio">Modo Bio</span>
+          <div class="toggle-switch" id="mode-toggle">
+            <div class="toggle-ball">
+              <svg class="icon-sun" viewBox="0 0 24 24">
+                <path d="M12 7a5 5 0 100 10 5 5 0 000-10zM2 13h2a1 1 0 100-2H2a1 1 0 100 2zm18 0h2a1 1 0 100-2h-2a1 1 0 100 2zM11 2v2a1 1 0 100 2V2a1 1 0 100-2zm0 18v2a1 1 0 100 2v-2a1 1 0 100-2zM5.99 4.58a1 1 0 10-1.41 1.41l1.41-1.41a1 1 0 101.41-1.41zM18.01 16.6a1 1 0 10-1.41 1.41l1.41-1.41a1 1 0 101.41-1.41zM4.58 18.01a1 1 0 101.41 1.41l-1.41-1.41a1 1 0 10-1.41 1.41zM16.6 5.99a1 1 0 101.41-1.41l-1.41 1.41a1 1 0 10-1.41 1.41z" />
+              </svg>
+              <svg class="icon-moon" viewBox="0 0 24 24">
+                <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="system-terminal-logs" class="terminal-logs-container"></div>
+
+  <div data-barba="wrapper">
+    <main data-barba="container" data-barba-namespace="about">
+      <div id="content" class="site-content">
+
+        <section class="hero-intro">
+          <div class="container">
+            <span class="hero-badge" data-i18n="about_hero_badge">Sobre mí</span>
+            <h1 class="hero-name">
+              <span class="hero-name-line"><span class="highlight-accent">Daniel</span> Velasquez</span>
+            </h1>
+            <p class="hero-tagline" data-i18n="about_hero_tagline">Frontend Developer con alma creativa</p>
+          </div>
+        </section>
+
+        <nav class="custom-nav">
+          <ul class="nav-list">
+            <li><a href="index.html" class="nav-link" data-i18n="about_nav_home">Inicio</a></li>
+            <li><a href="#bio" class="nav-link" data-i18n="about_nav_bio">Bio</a></li>
+            <li><a href="#skills" class="nav-link" data-i18n="about_nav_skills">Skills</a></li>
+            <li><a href="#experience" class="nav-link" data-i18n="about_nav_experience">Experiencia</a></li>
+            <li><a href="index.html#contact" class="nav-link" data-i18n="about_nav_contact">Contacto</a></li>
+          </ul>
+        </nav>
+
+        <section id="bio" class="about-section">
+          <div class="container">
+            <div class="section-header">
+              <span class="section-number">01</span>
+              <h2 class="section-title" data-i18n="bio_section_title">Bio</h2>
+              <div class="section-line"></div>
+            </div>
+            <div class="bio-full">
+              <div class="bio-main">
+                <h3 class="about-greeting"><span data-i18n="bio_greeting">Soy</span> <span class="highlight-accent">Daniel</span></h3>
+                <p class="about-text" data-i18n="bio_text1">Frontend Developer y creativo en constante evolución. Llevo más de 5 años construyendo experiencias digitales que no solo funcionan, sino que se sienten vivas. Mi fórmula: código limpio, diseño con intención, y una obsesión casi enfermiza por los detalles que nadie ve pero todos perciben.</p>
+                <p class="about-text" data-i18n="bio_text2">Mi historia empieza en el diseño gráfico. En <strong>Construyored.com</strong> pasé dos años creando animaciones SVG, ilustraciones vectoriales y piezas visuales desde cero. Ahí entendí que un píxel no es solo un punto: es una decisión. Esa precisión la llevé después al frontend en <strong>Ases Empresariales</strong> (2018–2020) y <strong>Generación Internal Group</strong> (2016–2018), donde combiné mi ojo de diseñador con código que resolvía problemas reales.</p>
+                <p class="about-text" data-i18n="bio_text3">Hoy me muevo entre React, Node, Three.js y GSAP para crear interfaces que responden, emocionan y convierten. También sé defenderme en PHP, WordPress y Go cuando el proyecto lo pide. Y sí, soy de los que dibujan animaciones en After Effects mientras debuggean en la terminal.</p>
+                <p class="about-text" data-i18n="bio_text4">Uno de mis logros más orgullosos fue quedar <strong>2º en Colombia 3.0</strong> con un proyecto de juego inclusivo para niños con discapacidad, desarrollado en Unity. Ver cómo la tecnología puede derribar barreras me recordó por qué elegí este camino.</p>
+                <p class="about-text" data-i18n="bio_text5">Fuera del código: skate, fotografía analógica, café de especialidad y una fascinación sin límites por la exploración espacial. Todo eso termina colándose en lo que construyo, porque creo que el mejor trabajo nace de lo que realmente te apasiona.</p>
+              </div>
+              <div class="bio-sidebar">
+                <div class="bio-card">
+                  <h4 data-i18n="bio_quick_facts_title">Datos rápidos</h4>
+                  <ul class="bio-facts">
+                    <li data-i18n="bio_fact_location"><strong>📍 Ubicación:</strong> Manizales, Colombia</li>
+                    <li data-i18n="bio_fact_role"><strong>💼 Rol:</strong> Frontend & Creative Developer</li>
+                    <li data-i18n="bio_fact_education"><strong>🎓 Educación:</strong> Ing. Sistemas / FP Apps Web</li>
+                    <li data-i18n="bio_fact_languages"><strong>🗣️ Idiomas:</strong> Español, Inglés</li>
+                    <li data-i18n="bio_fact_stack"><strong>⚡ Stack fav:</strong> Node + React + GSAP</li>
+                  </ul>
+                </div>
+                <div class="bio-card">
+                  <h4 data-i18n="bio_interests_title">Intereses</h4>
+                  <div class="interests-grid">
+                    <span class="interest-tag">Skateboarding</span>
+                    <span class="interest-tag">Space Tech</span>
+                    <span class="interest-tag">Fotografía</span>
+                    <span class="interest-tag">Animación</span>
+                    <span class="interest-tag">Música</span>
+                    <span class="interest-tag">Videojuegos</span>
+                    <span class="interest-tag">Café</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="skills" class="skills-section">
+          <div class="container">
+            <div class="section-header">
+              <span class="section-number">02</span>
+              <h2 class="section-title" data-i18n="skills_section_title">Skills</h2>
+              <div class="section-line"></div>
+            </div>
+            <div class="skills-categories">
+              <div class="skill-category">
+                <h3 class="category-title" data-i18n="skills_frontend_title">Frontend</h3>
+                <div class="skills-grid">
+                  <span class="skill-tag">React</span>
+                  <span class="skill-tag">JavaScript</span>
+                  <span class="skill-tag">CSS</span>
+                  <span class="skill-tag">Three.js</span>
+                  <span class="skill-tag">GSAP</span>
+                  <span class="skill-tag">HTML</span>
+                  <span class="skill-tag">Framer Motion</span>
+                  <span class="skill-tag">WebGL</span>
+                </div>
+              </div>
+              <div class="skill-category">
+                <h3 class="category-title" data-i18n="skills_backend_title">Backend</h3>
+                <div class="skills-grid">
+                  <span class="skill-tag">Node.js</span>
+                  <span class="skill-tag">PHP</span>
+                  <span class="skill-tag">Go</span>
+                  <span class="skill-tag">Express</span>
+                  <span class="skill-tag">WordPress</span>
+                  <span class="skill-tag">MySQL</span>
+                  <span class="skill-tag">PostgreSQL</span>
+                  <span class="skill-tag">MongoDB</span>
+                </div>
+              </div>
+              <div class="skill-category">
+                <h3 class="category-title" data-i18n="skills_devops_title">DevOps & Tools</h3>
+                <div class="skills-grid">
+                  <span class="skill-tag">Docker</span>
+                  <span class="skill-tag">Git</span>
+                  <span class="skill-tag">Linux</span>
+                  <span class="skill-tag">REST APIs</span>
+                  <span class="skill-tag">GitHub Pages</span>
+                  <span class="skill-tag">NGINX</span>
+                </div>
+              </div>
+              <div class="skill-category">
+                <h3 class="category-title" data-i18n="skills_creative_title">Creative</h3>
+                <div class="skills-grid">
+                  <span class="skill-tag">Photoshop</span>
+                  <span class="skill-tag">After Effects</span>
+                  <span class="skill-tag">Illustrator</span>
+                  <span class="skill-tag">Premiere</span>
+                  <span class="skill-tag">Figma</span>
+                  <span class="skill-tag">Blender</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="experience" class="experience-section">
+          <div class="container">
+            <div class="section-header">
+              <span class="section-number">03</span>
+              <h2 class="section-title" data-i18n="exp_section_title">Experiencia</h2>
+              <div class="section-line"></div>
+            </div>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <span class="timeline-date" data-i18n="exp1_date">2020 — Presente</span>
+                  <h3 class="timeline-title" data-i18n="exp1_title">Creative Developer Freelance</h3>
+                  <span class="timeline-company" data-i18n="exp1_company">DevelasqRoad Studio</span>
+                  <p class="timeline-desc" data-i18n="exp1_desc">Desarrollo de experiencias web interactivas para clientes directos. Combino frontend con React, animaciones GSAP y diseño visual. También me muevo en WordPress y PHP cuando toca.</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <span class="timeline-date" data-i18n="exp2_date">2018 — 2020</span>
+                  <h3 class="timeline-title" data-i18n="exp2_title">Frontend Developer</h3>
+                  <span class="timeline-company" data-i18n="exp2_company">Ases Empresariales</span>
+                  <p class="timeline-desc" data-i18n="exp2_desc">Desarrollo de interfaces web y componentes frontend. Implementación de diseños responsivos, optimización de rendimiento y colaboración directa con el equipo de diseño.</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <span class="timeline-date" data-i18n="exp3_date">2016 — 2018</span>
+                  <h3 class="timeline-title" data-i18n="exp3_title">Frontend Developer</h3>
+                  <span class="timeline-company" data-i18n="exp3_company">Generación Internal Group</span>
+                  <p class="timeline-desc" data-i18n="exp3_desc">Construcción de sitios web y aplicaciones frontend. Trabajo en equipo multidisciplinario, maquetación CSS y primeros pasos en animaciones web.</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <span class="timeline-date" data-i18n="exp4_date">2015 — 2017</span>
+                  <h3 class="timeline-title" data-i18n="exp4_title">Animador & Diseñador SVG</h3>
+                  <span class="timeline-company" data-i18n="exp4_company">Construyored.com</span>
+                  <p class="timeline-desc" data-i18n="exp4_desc">Creación de animaciones SVG, ilustraciones vectoriales y piezas gráficas. Ahí entendí que un píxel no es solo un punto: es una decisión de diseño.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="about-cta-section">
+          <div class="container">
+            <div class="cta-block">
+              <h2 class="cta-block-title" data-i18n="cta_title">¿Listo para trabajar juntos?</h2>
+              <p class="cta-block-text" data-i18n="cta_text">Estoy abierto a nuevas oportunidades, colaboraciones interesantes y proyectos desafiantes. Si tenés una idea en mente, hablemos.</p>
+              <a href="index.html#contact" class="btn-primary" data-i18n="cta_button">Contactar</a>
+            </div>
+          </div>
+        </section>
+
+        <footer class="site-footer">
+          <div class="container">
+            <p data-i18n="footer_text">© 2026 DevelasqRoad. Pasión por el frontend, obsesión por el detalle.</p>
+          </div>
+        </footer>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/MotionPathPlugin.min.js"></script>
+  <script src="https://assets.codepen.io/16327/MorphSVGPlugin3.min.js"></script>
+  <script src="https://unpkg.com/@barba/core"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
