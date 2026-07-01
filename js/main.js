@@ -1292,11 +1292,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function initNameClick() {
-        if (window.__nameClickInited) return;
+        const oldTriangle = document.querySelector('.name-triangle');
+        if (oldTriangle) oldTriangle.remove();
+        ScrollTrigger.getById('triangle-scroll')?.kill();
+        document.body.classList.remove('name-triangle-open');
+
         const nameEl = document.querySelector('.highlight-accent');
         if (!nameEl) return;
         nameEl.style.cursor = 'pointer';
-        window.__nameClickInited = true;
 
         const triangle = document.createElement('div');
         triangle.className = 'name-triangle';
