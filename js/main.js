@@ -1580,7 +1580,26 @@ document.addEventListener("DOMContentLoaded", () => {
         let gameAnim = null;
         let gameState = 'idle';
         let pos = 0;
+        let flipTimer = null;
         const speed = 2.5;
+
+        // Preload images
+        const imgs = {};
+        function loadImages() {
+            const names = ['ride', 'jump', 'flip', 'stand'];
+            let loaded = 0;
+            return new Promise(resolve => {
+                names.forEach(name => {
+                    const img = new Image();
+                    img.onload = img.onerror = () => {
+                        loaded++;
+                        if (loaded === names.length) resolve();
+                    };
+                    img.src = `assets/img/${name}.png`;
+                    imgs[name] = img;
+                });
+            });
+        }
 
         const gameArea = document.createElement('div');
         gameArea.id = 'skate-game-area';
@@ -1600,12 +1619,6 @@ document.addEventListener("DOMContentLoaded", () => {
             textAlign: 'center', pointerEvents: 'none', zIndex: '2',
         });
 
-        const skyline = document.createElement('div');
-        Object.assign(skyline.style, {
-            position: 'absolute', bottom: '60px', left: '0', right: '0', height: '40px',
-            pointerEvents: 'none', zIndex: '0',
-        });
-
         const ground = document.createElement('div');
         Object.assign(ground.style, {
             position: 'absolute', bottom: '0', left: '0', right: '0', height: '60px',
@@ -1617,98 +1630,37 @@ document.addEventListener("DOMContentLoaded", () => {
         skater.id = 'skater';
         Object.assign(skater.style, {
             position: 'absolute', bottom: '60px', left: '0',
-            width: '80px', height: '80px',
-            backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',
+            width: '140px', height: '120px',
+            backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center bottom',
             transition: 'none', zIndex: '1',
-            imageRendering: 'pixelated',
             transform: 'translateX(0)',
         });
-
-        function drawPlaceholder(state) {
-            const c = document.createElement('canvas');
-            c.width = 120; c.height = 120;
-            const ctx = c.getContext('2d');
-
-            const colors = {
-                idle: '#666', ride: '#4fc3f7', jump: '#66bb6a', flip: '#ffa726',
-            };
-            const color = colors[state] || '#888';
-
-            ctx.clearRect(0, 0, 120, 120);
-
-            // Ground line
-            ctx.strokeStyle = 'rgba(255,255,255,0.15)';
-            ctx.lineWidth = 1;
-            ctx.beginPath(); ctx.moveTo(0, 100); ctx.lineTo(120, 100); ctx.stroke();
-
-            // Skateboard
-            ctx.fillStyle = color;
-            ctx.fillRect(25, 90, 70, 8);
-            ctx.beginPath(); ctx.arc(32, 100, 5, 0, Math.PI * 2); ctx.fill();
-            ctx.beginPath(); ctx.arc(88, 100, 5, 0, Math.PI * 2); ctx.fill();
-
-            // Body
-            ctx.fillStyle = '#fff';
-            if (state === 'ride') {
-                ctx.fillRect(50, 45, 20, 35);
-                ctx.beginPath(); ctx.arc(60, 35, 14, 0, Math.PI * 2); ctx.fill();
-                // Arms
-                ctx.strokeStyle = '#fff'; ctx.lineWidth = 3;
-                ctx.beginPath(); ctx.moveTo(50, 55); ctx.lineTo(30, 65); ctx.stroke();
-                ctx.beginPath(); ctx.moveTo(70, 55); ctx.lineTo(90, 65); ctx.stroke();
-                // Legs
-                ctx.beginPath(); ctx.moveTo(55, 80); ctx.lineTo(45, 90); ctx.stroke();
-                ctx.beginPath(); ctx.moveTo(65, 80); ctx.lineTo(75, 90); ctx.stroke();
-            } else if (state === 'jump') {
-                ctx.fillRect(50, 30, 20, 30);
-                ctx.beginPath(); ctx.arc(60, 20, 14, 0, Math.PI * 2); ctx.fill();
-                ctx.strokeStyle = '#fff'; ctx.lineWidth = 3;
-                ctx.beginPath(); ctx.moveTo(50, 40); ctx.lineTo(30, 20); ctx.stroke();
-                ctx.beginPath(); ctx.moveTo(70, 40); ctx.lineTo(90, 20); ctx.stroke();
-                ctx.beginPath(); ctx.moveTo(55, 60); ctx.lineTo(45, 75); ctx.stroke();
-                ctx.beginPath(); ctx.moveTo(65, 60); ctx.lineTo(75, 75); ctx.stroke();
-            } else if (state === 'flip') {
-                ctx.fillRect(50, 35, 20, 25);
-                ctx.beginPath(); ctx.arc(60, 22, 14, 0, Math.PI * 2); ctx.fill();
-                ctx.strokeStyle = '#fff'; ctx.lineWidth = 3;
-                ctx.beginPath(); ctx.moveTo(50, 42); ctx.lineTo(30, 55); ctx.stroke();
-                ctx.beginPath(); ctx.moveTo(70, 42); ctx.lineTo(90, 30); ctx.stroke();
-                ctx.beginPath(); ctx.moveTo(55, 60); ctx.lineTo(40, 78); ctx.stroke();
-                ctx.beginPath(); ctx.moveTo(65, 60); ctx.lineTo(80, 78); ctx.stroke();
-                // Board flip trail
-                ctx.strokeStyle = color; ctx.lineWidth = 2; ctx.globalAlpha = 0.4;
-                ctx.beginPath(); ctx.ellipse(60, 90, 40, 10, 0, 0, Math.PI * 2); ctx.stroke();
-                ctx.globalAlpha = 1;
-            } else {
-                // idle
-                ctx.fillRect(50, 48, 20, 35);
-                ctx.beginPath(); ctx.arc(60, 36, 14, 0, Math.PI * 2); ctx.fill();
-                ctx.strokeStyle = '#fff'; ctx.lineWidth = 3;
-                ctx.beginPath(); ctx.moveTo(50, 58); ctx.lineTo(35, 68); ctx.stroke();
-                ctx.beginPath(); ctx.moveTo(70, 58); ctx.lineTo(85, 68); ctx.stroke();
-                ctx.beginPath(); ctx.moveTo(55, 83); ctx.lineTo(45, 92); ctx.stroke();
-                ctx.beginPath(); ctx.moveTo(65, 83); ctx.lineTo(75, 92); ctx.stroke();
-            }
-            // State label
-            ctx.fillStyle = 'rgba(255,255,255,0.25)';
-            ctx.font = '10px monospace';
-            ctx.textAlign = 'center';
-            ctx.fillText(state.toUpperCase(), 60, 115);
-
-            return c.toDataURL();
-        }
 
         function setState(newState) {
             if (gameState === newState && newState !== 'idle') return;
             gameState = newState;
-            skater.style.backgroundImage = `url('${drawPlaceholder(newState)}')`;
 
             if (newState === 'idle') {
                 instruction.style.display = 'block';
                 skater.style.display = 'none';
+                return;
+            }
+
+            instruction.style.display = 'none';
+            skater.style.display = 'block';
+
+            const img = imgs[newState];
+            if (img && img.complete && img.naturalWidth > 0) {
+                skater.style.backgroundImage = `url('${img.src}')`;
             } else {
-                instruction.style.display = 'none';
-                skater.style.display = 'block';
+                skater.style.backgroundImage = `url('assets/img/${newState}.png')`;
+            }
+
+            if (newState === 'flip') {
+                if (flipTimer) clearTimeout(flipTimer);
+                flipTimer = setTimeout(() => {
+                    if (gameState === 'flip') setState('stand');
+                }, 350);
             }
         }
 
@@ -1737,6 +1689,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (pos > areaW + 20) {
                     setState('idle');
                     pos = 0;
+                    if (flipTimer) { clearTimeout(flipTimer); flipTimer = null; }
                     if (gameAnim) { cancelAnimationFrame(gameAnim); gameAnim = null; }
                     return;
                 }
@@ -1746,21 +1699,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
         container.innerHTML = '';
         container.style.cssText = 'padding:20px;width:100%;height:100%;display:flex;box-sizing:border-box;';
-        gameArea.appendChild(skyline);
         gameArea.appendChild(ground);
         gameArea.appendChild(skater);
         gameArea.appendChild(instruction);
         container.appendChild(gameArea);
 
-        setState('idle');
+        // Show loading state
+        instruction.textContent = 'Cargando...';
+
+        loadImages().then(() => {
+            instruction.textContent = 'Presiona TAB o haz click para empezar';
+            setState('idle');
+        });
 
         document.addEventListener('keydown', onInput);
         gameArea.addEventListener('click', onInput);
         gameArea.addEventListener('touchstart', onInput, { passive: true });
         gameArea.style.cursor = 'pointer';
 
-        // Store cleanup
         container._stopSkate = function () {
+            if (flipTimer) { clearTimeout(flipTimer); flipTimer = null; }
             if (gameAnim) { cancelAnimationFrame(gameAnim); gameAnim = null; }
             document.removeEventListener('keydown', onInput);
         };
